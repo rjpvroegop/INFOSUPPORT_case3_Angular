@@ -11,11 +11,13 @@ import {CatalogOverviewComponent} from './directives/catalog-overview/catalog-ov
 import {ProductThumbnailComponent} from './directives/product-thumbnail/product-thumbnail.component';
 import {SidebarFilterComponent} from './directives/sidebar-filter/sidebar-filter.component';
 import {ProductOverviewComponent} from './pages/product-overview/product-overview.component'
+import {CustomerOverviewComponent} from './pages/customer-overview/customer-overview.component';
 import {SearchPipe} from './pipes/search-pipe';
 
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},
-  {path: 'products', component: ProductOverviewComponent}
+  {path: 'products', component: ProductOverviewComponent},
+  {path: 'customers', component: CustomerOverviewComponent}
 ];
 
 @NgModule({
@@ -33,7 +35,8 @@ const appRoutes: Routes = [
     CatalogOverviewComponent,
     SidebarFilterComponent,
     ProductOverviewComponent,
-    SearchPipe
+    SearchPipe,
+    CustomerOverviewComponent
   ],
   bootstrap: [AppComponent]
 })

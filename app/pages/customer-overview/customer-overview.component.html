@@ -1,0 +1,37 @@
+<nav-header></nav-header>
+<div class="container">
+<div class="row">
+  <h3>Personal Information</h3>
+  <form class="col s12">
+    <div class="row">
+      <div class="input-field col s6">
+        <input placeholder="Placeholder" id="first_name" name="first_name" type="text" class="validate" [(ngModel)]="customer.firstName">
+        <label for="first_name">First Name</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="last_name" name="last_name" type="text" class="validate" [(ngModel)]="customer.lastName">
+        <label for="last_name">Last Name</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input type="date" id="birthDate" name="birthDate" [(ngModel)]="customer.birthDate" class="datepicker">
+        <label for="birthDate">Birthdate</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input [(ngModel)]="customer.email" id="email" name="email" type="email">
+        <label for="email">Email</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="phone" name="phone"type="tel" class="validate" [(ngModel)]="customer.phone">
+        <label for="phone">Phone</label>
+      </div>
+    </div>
+    <button (click)="clicked()">Submit</button>
+  </form>
+</div>
+</div>
