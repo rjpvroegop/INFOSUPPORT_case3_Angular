@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-
+import {Customer} from "../../model/Customer";
+import {materialize} from "rxjs/operator/materialize";
 @Component({
   moduleId: module.id,
   selector : 'customer-overview',
@@ -7,21 +8,17 @@ import { Component } from '@angular/core';
 })
 export class CustomerOverviewComponent {
   title = "Overview Of Customers";
-  customer = new Customer();
+  customer : Customer = {
+    firstName : "Yusuf",
+    addresses : [{street : "Sesamstraat 1"}, {street : "Sesamstraat 2"}, {street : "Sesamstraat 3"}, {street : "Sesamstraat 4"}]
+  };
+
+  ngAfterViewInit(){
+    Materialize.updateTextFields();
+    $('.collapsible').collapsible();
+  }
 
   clicked(){
     console.log(this.customer);
   }
-}
-
-
-class Customer {
-  id : number;
-  firstName : string;
-  lastName : string;
-  birthDate : any;
-  address : any;
-  credit : number;
-  email : string;
-  phone : string
 }
