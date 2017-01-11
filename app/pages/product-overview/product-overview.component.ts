@@ -8,7 +8,7 @@ import {Http, Response, Headers, RequestOptions} from '@angular/http';
 })
 @Injectable()
 export class ProductOverviewComponent {
-  productUrl = "http://localhost:10001/bscatalogusbeheer/catalog/activeproducts";
+  productUrl = "http://localhost:10001/bscatalogusbeheer/catalog/activeproducts ";
   title = "Overview Of Products";
   search_title = "";
   products = [];
@@ -33,8 +33,10 @@ export class ProductOverviewComponent {
 
   extractProducts(res){
     let body = res.json();
-    console.log(body);
-    this.products = body;
-    return body;
+
+    this.products = body.map(product => {
+      product = <Product> product;
+      return product;
+    });
   }
 }
