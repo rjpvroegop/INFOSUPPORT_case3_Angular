@@ -40,7 +40,7 @@ const appRoutes: Routes = [
     CustomerOverviewComponent,
     ProductDetailComponent,
     FilterPipe,
-    ObjectKeysPipe
+    ObjectKeysPipe,
     ProductDetailComponent,
     SortPipe
   ],
