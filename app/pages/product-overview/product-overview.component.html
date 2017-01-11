@@ -7,6 +7,14 @@
     <label>Search</label>
     <input [(ngModel)]="search_title" name="search_key">
 
+    <label>Sort By</label>
+    <p *ngFor="let option of filter_options">
+      <input type="radio" name="option" [(ngModel)]="filter_by" [value]="option" [id]="option">
+      <label [for]="option">
+        {{option}}
+      </label>
+    </p>
+
     <p>
       <input [(ngModel)]="bikes" type="checkbox" id="bike" />
       <label for="bike">Bikes</label>
@@ -24,9 +32,9 @@
       <label for="clothes">Clothing</label>
     </p>
   </div>
-
+{{filter_by}}
   <div class="col s8">
-    <product-thumbnail *ngFor='let product of products | search : search_title' [product]="product"></product-thumbnail>
+    <product-thumbnail *ngFor='let product of products | search : search_title | sort : filter_by'  [product]="product"></product-thumbnail>
   </div>
 
 </div>

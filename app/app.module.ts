@@ -11,6 +11,7 @@ import {ProductThumbnailComponent} from './directives/product-thumbnail/product-
 import {ProductOverviewComponent} from './pages/product-overview/product-overview.component'
 import {CustomerOverviewComponent} from './pages/customer-overview/customer-overview.component';
 import {SearchPipe} from './pipes/search-pipe';
+import {SortPipe} from './pipes/sort-pipe';
 import {ProductDetailComponent} from "./pages/product-detail/product-detail.component";
 
 const appRoutes: Routes = [
@@ -35,7 +36,8 @@ const appRoutes: Routes = [
     ProductOverviewComponent,
     SearchPipe,
     CustomerOverviewComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    SortPipe
   ],
   bootstrap: [AppComponent]
 })
