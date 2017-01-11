@@ -12,7 +12,7 @@ export class ProductOverviewComponent {
   products = PRODUCTS;
 
   printSomething(){
-    console.log('Key ' + this.search_keyword);
+    console.log('Key ' + this.search_title);
   }
 }
 
