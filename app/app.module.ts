@@ -13,10 +13,12 @@ import {SidebarFilterComponent} from './directives/sidebar-filter/sidebar-filter
 import {ProductOverviewComponent} from './pages/product-overview/product-overview.component'
 import {CustomerOverviewComponent} from './pages/customer-overview/customer-overview.component';
 import {SearchPipe} from './pipes/search-pipe';
+import {ProductDetailComponent} from "./pages/product-detail/product-detail.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},
   {path: 'products', component: ProductOverviewComponent},
+  {path: 'product', component: ProductDetailComponent},
   {path: 'customers', component: CustomerOverviewComponent}
 ];
 
@@ -36,7 +38,8 @@ const appRoutes: Routes = [
     SidebarFilterComponent,
     ProductOverviewComponent,
     SearchPipe,
-    CustomerOverviewComponent
+    CustomerOverviewComponent,
+    ProductDetailComponent
   ],
   bootstrap: [AppComponent]
 })
