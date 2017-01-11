@@ -1,6 +1,7 @@
 import {Component} from "@angular/core";
 import {Product} from "../../model/product";
 import {Http} from "@angular/http";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   moduleId: module.id,
@@ -9,17 +10,29 @@ import {Http} from "@angular/http";
 })
 
 export class ProductDetailComponent {
-  productUrl = "http://localhost:10001/bscatalogusbeheer/catalog/products/1";
-  product = {
+  productUrl: string = "http://localhost:10001/bscatalogusbeheer/catalog/products/";
+  product: any = {
     supplier: {}
+  };
+  private sub: any;
+
+  constructor(private http: Http, private route: ActivatedRoute) {
   }
 
-  constructor(private http: Http) {
-    this.getProduct();
+  ngOnInit() {
+    this.sub = this.route.params.subscribe(params => {
+      let id = params['id'];
+
+      this.getProduct(id);
+    });
   }
 
-  getProduct() {
-    this.http.get(this.productUrl)
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
+
+  getProduct(id:string) {
+    this.http.get(this.productUrl + id)
       .subscribe(
         this.extractProduct.bind(this)
       );

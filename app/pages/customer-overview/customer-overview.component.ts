@@ -1,6 +1,7 @@
 import {Component} from "@angular/core";
 import {Account} from "../../model/Account";
 import {Http} from "@angular/http";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   moduleId: module.id,
@@ -9,20 +10,39 @@ import {Http} from "@angular/http";
 })
 
 export class CustomerOverviewComponent {
-  accountUrl = "http://localhost:10001/bsklantbeheer/accounts/1";
+  accountUrl = "http://localhost:10001/bsklantbeheer/accounts/";
   saveAccountUrl = "http://localhost:10001/bsklantbeheer/customers/editcustomer";
+  newAccountUrl = "http://localhost:10001/bsklantbeheer/accounts/newaccount";
   title = "Overview Of Customers";
 
   account = {
     customer: {}
   };
 
-  constructor(private http: Http) {
-    this.getAccount();
+  newUser = true;
+
+  sub: any;
+
+  constructor(private http: Http, private route: ActivatedRoute) {
   }
 
-  getAccount() {
-    this.http.get(this.accountUrl)
+  ngOnInit() {
+    this.sub = this.route.params.subscribe(params => {
+      let id = params['id'];
+
+      if (id != undefined) {
+        this.newUser = false;
+        this.getAccount(id);
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
+
+  getAccount(id: string) {
+    this.http.get(this.accountUrl + id)
       .subscribe(
         this.extractAccount.bind(this)
       );
@@ -34,8 +54,14 @@ export class CustomerOverviewComponent {
     console.log(body);
   }
 
-  submitNewAccount(){
+  updateAccount() {
     this.http.put(this.saveAccountUrl, this.account.customer).subscribe(console.log);
+  }
+
+  newAccount() {
+    this.account.id = undefined;
+    this.account.customer.id = undefined;
+    this.http.post(this.newAccountUrl, this.account).subscribe(console.log);
   }
 
   clicked() {

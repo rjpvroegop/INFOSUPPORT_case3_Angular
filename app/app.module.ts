@@ -18,8 +18,9 @@ import {ObjectKeysPipe} from "./pipes/object-keys-pipe";
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},
   {path: 'products', component: ProductOverviewComponent},
-  {path: 'product', component: ProductDetailComponent},
-  {path: 'customers', component: CustomerOverviewComponent}
+  {path: 'product/:id', component: ProductDetailComponent},
+  {path: 'customer', component: CustomerOverviewComponent}
+  {path: 'customer/:id', component: CustomerOverviewComponent}
 ];
 
 @NgModule({
