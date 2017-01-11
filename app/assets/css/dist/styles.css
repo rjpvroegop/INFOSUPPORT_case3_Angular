@@ -23,13 +23,11 @@ nav-header {
   nav-header nav {
     box-shadow: none; }
 
-homepage-component, product-overview-component {
+homepage-component, product-overview-component, customer-overview, product-detail-component {
   width: 1200px;
   display: block;
   margin: 0 auto;
   box-shadow: 0 0 2px black; }
 
 .product_detail_img {
-  margin: 20px;
-width: 100%;
-}
+  margin: 20px; }
