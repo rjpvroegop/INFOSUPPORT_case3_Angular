@@ -30,4 +30,5 @@ homepage-component, product-overview-component, customer-overview, product-detai
   box-shadow: 0 0 2px black; }
 
 .product_detail_img {
-  margin: 20px; }
+  margin-top: 20px;
+  width: 100%; }
