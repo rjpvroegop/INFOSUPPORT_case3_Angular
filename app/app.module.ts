@@ -1,25 +1,29 @@
-import { NgModule }      from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
+import {NgModule}      from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {HttpModule} from '@angular/http';
+import {FormsModule} from '@angular/forms';
+import {RouterModule, Routes} from '@angular/router';
 
-import { RouterModule, Routes } from '@angular/router';
-
-import { AppComponent }  from './app.component';
-import { HomepageComponent }  from './pages/home/homepage.component';
-import { NavHeaderComponent } from './directives/nav-header/nav-header.component';
-import { CatalogOverviewComponent } from './directives/catalog-overview/catalog-overview.component';
-import { ProductThumbnailComponent } from './directives/product-thumbnail/product-thumbnail.component';
+import {AppComponent}  from './app.component';
+import {HomepageComponent}  from './pages/home/homepage.component';
+import {NavHeaderComponent} from './directives/nav-header/nav-header.component';
+import {CatalogOverviewComponent} from './directives/catalog-overview/catalog-overview.component';
+import {ProductThumbnailComponent} from './directives/product-thumbnail/product-thumbnail.component';
 import {SidebarFilterComponent} from './directives/sidebar-filter/sidebar-filter.component';
+import {ProductOverviewComponent} from './pages/product-overview/product-overview.component'
+import {SearchPipe} from './pipes/search-pipe';
 
 const appRoutes: Routes = [
-  { path: '', component: HomepageComponent }
+  {path: '', component: HomepageComponent},
+  {path: 'products', component: ProductOverviewComponent}
 ];
 
 @NgModule({
-  imports:      [
-    BrowserModule,
+  imports: [
     RouterModule.forRoot(appRoutes),
-    HttpModule
+    HttpModule,
+    BrowserModule,
+    FormsModule,
   ],
   declarations: [
     ProductThumbnailComponent,
@@ -27,8 +31,11 @@ const appRoutes: Routes = [
     HomepageComponent,
     NavHeaderComponent,
     CatalogOverviewComponent,
-    SidebarFilterComponent
+    SidebarFilterComponent,
+    ProductOverviewComponent,
+    SearchPipe
   ],
-  bootstrap:    [ AppComponent ]
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

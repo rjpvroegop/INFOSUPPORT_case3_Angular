@@ -1,0 +1,30 @@
+<nav-header></nav-header>
+<div class="container">
+    <h3>{{title}}</h3>
+
+    <div>
+        <label>Search By Title</label>
+        <input [(ngModel)]="search_title" name="search_key">
+    </div>
+    <div>
+        <label>Search By Price</label>
+        <input [(ngModel)]="search_price" name="search_key">
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let product of products | search : search_title | search : search_price">
+            <td>{{product.id}}</td>
+            <td>{{product.title}}</td>
+            <td>{{product.price}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <button (click)="printSomething()">Print</button>
+</div>

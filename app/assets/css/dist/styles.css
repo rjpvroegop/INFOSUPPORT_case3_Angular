@@ -15,15 +15,16 @@ h1 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 250%; }
 
-homepage-component {
+nav-header {
+  height: 334px;
+  background-image: url("../../images/banner.png");
+  background-position-y: 64px;
+  display: block; }
+  nav-header nav {
+    box-shadow: none; }
+
+homepage-component, product-overview-component {
   width: 1200px;
   display: block;
   margin: 0 auto;
   box-shadow: 0 0 2px black; }
-  homepage-component nav-header {
-    height: 334px;
-    background-image: url("../../images/banner.png");
-    background-position-y: 64px;
-    display: block; }
-    homepage-component nav-header nav {
-      box-shadow: none; }
