@@ -1,24 +1,54 @@
+import {Component} from "@angular/core";
+import {Account} from "../../model/Account";
+import {Http} from "@angular/http";
+
 import {Component} from '@angular/core';
 import {Customer} from "../../model/Customer";
 import {materialize} from "rxjs/operator/materialize";
 @Component({
-    moduleId: module.id,
-    selector: 'customer-overview',
-    templateUrl: 'customer-overview.component.html'
+  moduleId: module.id,
+  selector: 'customer-overview',
+  templateUrl: 'customer-overview.component.html'
 })
+
 export class CustomerOverviewComponent {
-    title = "Overview Of Customers";
-    customer:Customer = {
-        firstName: "Yusuf",
-        addresses: [{street: "Sesamstraat 1"}, {street: "Sesamstraat 2"}, {street: "Sesamstraat 3"}, {street: "Sesamstraat 4"}]
-    };
+  accountUrl = "http://localhost:10001/bsklantbeheer/accounts/1";
+  saveAccountUrl = "http://localhost:10001/bsklantbeheer/customers/editcustomer";
+  title = "Overview Of Customers";
 
-    clicked() {
-        console.log(this.customer);
-    }
+  account = {
+    customer: {}
+  };
 
-    ngAfterViewInit() {
-        $('.collapsible').collapsible();
+  constructor(private http: Http) {
+    this.getAccount();
+  }
+
+  getAccount() {
+    this.http.get(this.accountUrl)
+      .subscribe(
+        this.extractAccount.bind(this)
+      );
+  }
+
+  extractAccount(res) {
+    let body = res.json();
+    this.account = <Account> body;
+    console.log(body);
+  }
+
+  submitNewAccount(){
+    this.http.put(this.saveAccountUrl, this.account.customer).subscribe(console.log);
+  }
+
+  clicked() {
+    console.log(this.account);
+  }
+
+  ngAfterViewInit() {
+
+    Materialize.updateTextFields();
+    $('.collapsible').collapsible();
 
         $('.datepicker').pickadate({
             selectMonths: true, // Creates a dropdown to control month

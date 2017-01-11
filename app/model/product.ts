@@ -2,7 +2,7 @@ import {Supplier} from "./supplier";
 export class Product {
   id : number;
   price : number;
-  title : string;
+  name : string;
   description : string;
   availableFrom: string;
   availabelUntil: string;

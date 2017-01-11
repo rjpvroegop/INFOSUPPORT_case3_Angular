@@ -1,68 +1,82 @@
 <nav-header></nav-header>
 <div class="container">
-    <div class="row">
-        <h3>Personal Information</h3>
-        <form class="col s12">
-            <div class="row">
+  <div class="row">
+    <h3>Personal Information</h3>
+    <form class="col s12">
+      <h4 class="kantilever-text-blue">Account</h4>
+      <div class="row">
+        <div class="input-field col s6">
+          <input disabled placeholder="Placeholder" id="username" name="username" type="text" class="validate"
+                 [(ngModel)]="account.userName">
+          <label for="username">Username</label>
+        </div>
+        <div class="input-field col s6">
+          <input disabled id="password" name="password" type="password" class="validate" [(ngModel)]="account.password">
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <h4 class="kantilever-text-blue">Customer</h4>
+      <div class="row">
+        <div class="input-field col s6">
+          <input placeholder="Placeholder" id="first_name" name="first_name" type="text" class="validate"
+                 [(ngModel)]="account.customer.firstName">
+          <label for="first_name">First Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="last_name" name="last_name" type="text" class="validate" [(ngModel)]="account.customer.lastName">
+          <label for="last_name">Last Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input type="date" id="birthDate" name="birthDate" [(ngModel)]="account.customer.birthDate"
+                 class="datepicker">
+          <label for="birthDate">Birthdate</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input [(ngModel)]="account.customer.email" id="email" name="email" type="email">
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="phone" name="phone" type="tel" class="validate" [(ngModel)]="account.customer.phone">
+          <label for="phone">Phone</label>
+        </div>
+      </div>
+    </form>
+    <h4 class="kantilever-text-blue">Addresses</h4>
+    <ul class="collapsible" data-collapsible="accordion">
+      <li *ngFor="let address of account.customer.addresses">
+        <h5 class="collapsible-header">{{address.street}} {{address.city}}</h5>
+        <div class="collapsible-body">
+          <form class="row">
+            <div class="col s10 offset-s1">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" id="street" name="street" [(ngModel)]="address.street">
+                  <label for="street">Street</label>
+                </div>
+              </div>
+              <div class="row">
                 <div class="input-field col s6">
-                    <input placeholder="Placeholder" id="first_name" name="first_name" type="text" class="validate"
-                           [(ngModel)]="customer.firstName">
-                    <label for="first_name" class="active">First Name</label>
+                  <input id="city" name="city" type="text" class="validate"
+                         [(ngModel)]="address.city">
+                  <label for="city">City</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="last_name" name="last_name" type="text" class="validate" [(ngModel)]="customer.lastName">
-                    <label for="last_name" class="active">Last Name</label>
+                  <input type="text" id="zip" name="zip" [(ngModel)]="address.zip">
+                  <label for="zip">zip</label>
                 </div>
+              </div>
             </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input type="date" id="birthDate" name="birthDate" [(ngModel)]="customer.birthDate" placeholder="birthDate"
-                           class="datepicker">
-                    <label for="birthDate" class="active">Birthdate</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input [(ngModel)]="customer.email" id="email" name="email" type="email">
-                    <label for="email" class="active">Email</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="phone" name="phone" type="tel" class="validate" [(ngModel)]="customer.phone">
-                    <label for="phone" class="active">Phone</label>
-                </div>
-            </div>
-        </form>
-        <h4>Addresses</h4>
-        <ul class="collapsible" data-collapsible="accordion">
-            <li *ngFor="let address of customer.addresses">
-                <h5 class="collapsible-header">{{address.street}}</h5>
-                <div class="collapsible-body">
-                    <form class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input type="text" id="street" name="street" [(ngModel)]="address.street" class="validate">
-                                    <label for="street" class="active">Street</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s6">
-                                    <input id="city" name="city" type="text" class="validate"
-                                           [(ngModel)]="address.city">
-                                    <label for="city" class="active">City</label>
-                                </div>
-                                <div class="input-field col s6">
-                                    <input type="text" id="zip" name="zip" [(ngModel)]="address.zip" class="validate">
-                                    <label for="zip" class="active">zip</label>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <a class="waves-effect waves-light btn" (click)="clicked()">Submit</a>
+          </form>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <a class="waves-effect waves-light btn" (click)="clicked()">Submit</a>
+  <a class="waves-effect waves-light btn" (click)="submitNewAccount()">Save updated information</a>
 </div>
