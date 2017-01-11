@@ -13,17 +13,14 @@ export class CustomerOverviewComponent {
     addresses : [{street : "Sesamstraat 1"}, {street : "Sesamstraat 2"}, {street : "Sesamstraat 3"}, {street : "Sesamstraat 4"}]
   };
 
-  ngAfterViewInit(){
-    Materialize.updateTextFields();
-    $('.collapsible').collapsible();
-  }
-
   clicked(){
     console.log(this.customer);
   }
 
   ngAfterViewInit(){
 
+    Materialize.updateTextFields();
+    $('.collapsible').collapsible();
 
     $('.datepicker').pickadate({
       selectMonths: true, // Creates a dropdown to control month
