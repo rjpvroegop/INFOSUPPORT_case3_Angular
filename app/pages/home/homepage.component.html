@@ -1,2 +1,9 @@
 <nav-header [encouragement]="encouragement"></nav-header>
 <h1>Welkom bij Kantilever</h1>
+
+<select [(ngModel)]="testvalue"> // value is a string or number
+  <option *ngFor="let object of testvalues" [value]="object">{{object.name}}</option>
+</select>
+
+{{testvalues}}
+{{testvalue}}

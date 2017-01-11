@@ -10,18 +10,18 @@ import {Http} from "@angular/http";
 
 export class CustomerOverviewComponent {
   accountUrl = "http://localhost:10001/bsklantbeheer/accounts/1";
+  saveAccountUrl = "http://localhost:10001/bsklantbeheer/customers/editcustomer";
   title = "Overview Of Customers";
 
   account = {
     customer: {}
-  }
+  };
 
   constructor(private http: Http) {
     this.getAccount();
   }
 
   getAccount() {
-
     this.http.get(this.accountUrl)
       .subscribe(
         this.extractAccount.bind(this)
@@ -31,6 +31,11 @@ export class CustomerOverviewComponent {
   extractAccount(res) {
     let body = res.json();
     this.account = <Account> body;
+    console.log(body);
+  }
+
+  submitNewAccount(){
+    this.http.put(this.saveAccountUrl, this.account.customer).subscribe(console.log);
   }
 
   clicked() {

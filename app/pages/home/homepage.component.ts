@@ -13,10 +13,16 @@ export class HomepageComponent {
   private productUrl = 'http://localhost:10001/bscatalogusbeheer/catalog/activeproducts';  // URL to web API
   public encouragement: string;
   public products = [];
+  testvalue = '';
+  testvalues = [{name:'test1'},{name:'test2'}];
 
   constructor(private http: Http) {
     // this.getSlogan();
     this.getProducts();
+  }
+
+  ngAfterViewInit(){
+    $('select').material_select();
   }
 
   // getSlogan(){
