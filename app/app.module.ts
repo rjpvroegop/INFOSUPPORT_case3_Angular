@@ -11,7 +11,7 @@ import { ProductThumbnailComponent } from './directives/product-thumbnail/produc
 import { CustomerOverviewComponent } from  './pages/customer-overview/customer-overview.component'
 const appRoutes: Routes = [
   { path: '', component: HomepageComponent },
-  { path: 'customers', component: CustomerOverviewComponent}
+  { path: 'customer', component: CustomerOverviewComponent}
 ];
 
 @NgModule({
