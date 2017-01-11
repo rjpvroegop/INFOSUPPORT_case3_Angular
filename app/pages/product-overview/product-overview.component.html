@@ -7,6 +7,14 @@
     <label>Search</label>
     <input [(ngModel)]="search_title" name="search_key">
 
+    <label>Sort By</label>
+    <p *ngFor="let option of filter_options">
+      <input type="radio" name="option" [(ngModel)]="filter_by" [value]="option" [id]="option">
+      <label [for]="option">
+        {{option}}
+      </label>
+    </p>
+
     <p>
       <input [(ngModel)]="bikes" type="checkbox" id="bike" />
       <label for="bike">Bikes</label>

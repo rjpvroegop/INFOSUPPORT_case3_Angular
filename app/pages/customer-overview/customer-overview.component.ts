@@ -3,6 +3,9 @@ import {Account} from "../../model/Account";
 import {Http} from "@angular/http";
 import {ActivatedRoute} from "@angular/router";
 
+import {Component} from '@angular/core';
+import {Customer} from "../../model/Customer";
+import {materialize} from "rxjs/operator/materialize";
 @Component({
   moduleId: module.id,
   selector: 'customer-overview',
@@ -73,9 +76,12 @@ export class CustomerOverviewComponent {
     Materialize.updateTextFields();
     $('.collapsible').collapsible();
 
-    $('.datepicker').pickadate({
-      selectMonths: true, // Creates a dropdown to control month
-      selectYears: 15 // Creates a dropdown of 15 years to control year
-    });
-  }
+        $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 15 // Creates a dropdown of 15 years to control year
+        });
+        setTimeout(()=> {
+            Materialize.updateTextFields();
+        }, 0)
+    }
 }
