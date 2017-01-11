@@ -12,6 +12,8 @@ import {ProductOverviewComponent} from './pages/product-overview/product-overvie
 import {CustomerOverviewComponent} from './pages/customer-overview/customer-overview.component';
 import {SearchPipe} from './pipes/search-pipe';
 import {ProductDetailComponent} from "./pages/product-detail/product-detail.component";
+import {FilterPipe} from "./pipes/filter-pipe";
+import {ObjectKeysPipe} from "./pipes/object-keys-pipe";
 
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},
@@ -35,7 +37,9 @@ const appRoutes: Routes = [
     ProductOverviewComponent,
     SearchPipe,
     CustomerOverviewComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    FilterPipe,
+    ObjectKeysPipe
   ],
   bootstrap: [AppComponent]
 })

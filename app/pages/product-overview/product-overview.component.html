@@ -24,9 +24,8 @@
       <label for="clothes">Clothing</label>
     </p>
   </div>
-
   <div class="col s8">
-    <product-thumbnail *ngFor='let product of products | search : search_title' [product]="product"></product-thumbnail>
+    <product-thumbnail *ngFor='let product of products | search : search_title | category : 2' [product]="product"></product-thumbnail>
   </div>
 
 </div>
