@@ -1,25 +1,40 @@
-import { Component } from '@angular/core';
-import { Product } from '../../model/product'
+import {Component, Injectable} from '@angular/core';
+import {Product} from '../../model/product'
+import {Http, Response, Headers, RequestOptions} from '@angular/http';
 @Component({
   moduleId: module.id,
-  selector : 'product-overview-component',
-  templateUrl : 'product-overview.component.html',
+  selector: 'product-overview-component',
+  templateUrl: 'product-overview.component.html',
 })
+@Injectable()
 export class ProductOverviewComponent {
+  productUrl = "http://localhost:10001/bscatalogusbeheer/catalog/activeproducts";
   title = "Overview Of Products";
   search_title = "";
-  search_price = "";
-  products = PRODUCTS;
+  products = [];
 
-  printSomething(){
-    console.log('Key ' + this.search_keyword);
+  bikes = true;
+  parts = true;
+  clothes = true;
+  misc = true;
+
+
+  constructor(private http: Http) {
+    this.getProducts();
+  }
+
+  getProducts(){
+
+    this.http.get(this.productUrl)
+      .subscribe(
+        this.extractProducts.bind(this)
+      );
+  }
+
+  extractProducts(res){
+    let body = res.json();
+    console.log(body);
+    this.products = body;
+    return body;
   }
 }
-
-const PRODUCTS : Product[] = [
-  { id : 1, title : "Product 1 ",  price : 1.2},
-  { id : 2, title : "Product 2 ",  price : 3.4},
-  { id : 3, title : "Product 3 ",  price : 5.6},
-  { id : 3, title : "Sproduct 3 ",  price : 5.6}
-
-]

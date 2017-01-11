@@ -1,26 +1,32 @@
 <nav-header></nav-header>
-<div class="container">
-    <h3>{{title}}</h3>
+<h3>{{title}}</h3>
 
-    <div>
-        <label>Search By Title</label>
-        <input [(ngModel)]="search_title" name="search_key">
-    </div>
-    <table>
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Title</th>
-            <th>Price</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let product of products | search : search_title">
-            <td>{{product.id}}</td>
-            <td>{{product.title}}</td>
-            <td>{{product.price}}</td>
-        </tr>
-        </tbody>
-    </table>
-    <button (click)="printSomething()">Print</button>
+<div class="row">
+
+  <div class="col s4">
+    <label>Search</label>
+    <input [(ngModel)]="search_title" name="search_key">
+
+    <p>
+      <input [(ngModel)]="bikes" type="checkbox" id="bike" />
+      <label for="bike">Bikes</label>
+    </p>
+    <p>
+      <input [(ngModel)]="misc" type="checkbox" id="misc" />
+      <label for="misc">Accessory</label>
+    </p>
+    <p>
+      <input [(ngModel)]="parts" type="checkbox" id="parts" />
+      <label for="parts">Parts</label>
+    </p>
+    <p>
+      <input [(ngModel)]="clothes" type="checkbox" id="clothes" />
+      <label for="clothes">Clothing</label>
+    </p>
+  </div>
+
+  <div class="col s8">
+    <product-thumbnail *ngFor='let product of products | search : search_title' [product]="product"></product-thumbnail>
+  </div>
+
 </div>
