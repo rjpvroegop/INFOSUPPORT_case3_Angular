@@ -11,6 +11,8 @@ export class ProductOverviewComponent {
   productUrl = "http://localhost:10001/bscatalogusbeheer/catalog/activeproducts ";
   title = "Overview Of Products";
   search_title = "";
+  filter_by = "default";
+  filter_options = ['name', 'price'];
   products = [];
 
   bikes = true;
@@ -21,6 +23,10 @@ export class ProductOverviewComponent {
 
   constructor(private http: Http) {
     this.getProducts();
+  }
+
+  ngAfterViewInit(){
+    $('select').material_select();
   }
 
   getProducts(){
