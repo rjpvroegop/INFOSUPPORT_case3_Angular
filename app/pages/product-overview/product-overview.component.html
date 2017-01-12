@@ -33,7 +33,7 @@
     </p>
   </div>
   <div class="col s8">
-    <product-thumbnail *ngFor='let product of products | search : search_title | category : bikes : parts : clothes : misc' [product]="product"></product-thumbnail>
+    <product-thumbnail *ngFor='let product of products | search : search_title | category : bikes : parts : clothes : misc | sort : filter_by' [product]="product"></product-thumbnail>
   </div>
 
 </div>
