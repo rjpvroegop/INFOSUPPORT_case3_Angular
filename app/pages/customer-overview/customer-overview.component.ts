@@ -6,6 +6,7 @@ import {ActivatedRoute} from "@angular/router";
 import {Component} from '@angular/core';
 import {Customer} from "../../model/Customer";
 import {materialize} from "rxjs/operator/materialize";
+import {Address} from "../../model/Address";
 @Component({
   moduleId: module.id,
   selector: 'customer-overview',
@@ -18,8 +19,10 @@ export class CustomerOverviewComponent {
   newAccountUrl = "http://localhost:10001/bsklantbeheer/accounts/newaccount";
   title = "Overview Of Customers";
 
-  account = {
-    customer: {}
+  account: any = {
+    customer: {
+      addresses: []
+    }
   };
 
   newUser = true;
@@ -51,7 +54,7 @@ export class CustomerOverviewComponent {
       );
   }
 
-  extractAccount(res) {
+  extractAccount(res: any) {
     let body = res.json();
     this.account = <Account> body;
     console.log(body);
@@ -67,6 +70,10 @@ export class CustomerOverviewComponent {
     this.http.post(this.newAccountUrl, this.account).subscribe(console.log);
   }
 
+  addAddress() {
+    this.account.customer.addresses.push(new Address)
+  }
+
   clicked() {
     console.log(this.account);
   }
@@ -78,7 +85,8 @@ export class CustomerOverviewComponent {
 
         $('.datepicker').pickadate({
             selectMonths: true, // Creates a dropdown to control month
-            selectYears: 15 // Creates a dropdown of 15 years to control year
+            selectYears: 15, // Creates a dropdown of 15 years to control year
+            format: 'yyyy-mm-dd'
         });
         setTimeout(()=> {
             Materialize.updateTextFields();
