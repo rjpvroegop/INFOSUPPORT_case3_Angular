@@ -7,6 +7,7 @@ import {Component} from '@angular/core';
 import {Customer} from "../../model/Customer";
 import {materialize} from "rxjs/operator/materialize";
 import {AccountService} from "../../service/account.service";
+import {Address} from "../../model/Address";
 @Component({
   moduleId: module.id,
   selector: 'customer-overview',
@@ -67,7 +68,8 @@ export class CustomerOverviewComponent {
 
         $('.datepicker').pickadate({
             selectMonths: true, // Creates a dropdown to control month
-            selectYears: 15 // Creates a dropdown of 15 years to control year
+            selectYears: 15, // Creates a dropdown of 15 years to control year
+            format: 'yyyy-mm-dd'
         });
         setTimeout(()=> {
             Materialize.updateTextFields();
