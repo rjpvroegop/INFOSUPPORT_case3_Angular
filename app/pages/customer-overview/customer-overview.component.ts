@@ -50,10 +50,14 @@ export class CustomerOverviewComponent {
 
   getAccount(id: string) {
     this.accountService.getAccount(id)
-      .then(account => this.account = account);
+      .then(account => {
+        this.account = account;
+        console.log(account);
+      });
   }
 
   updateAccount() {
+    console.log(this.account.customer);
     this.accountService.updateCustomer(this.account.customer);
   }
 
@@ -61,18 +65,32 @@ export class CustomerOverviewComponent {
     this.accountService.newAccount(this.account);
   }
 
+  addAddress() {
+    this.account.customer.addresses.push(new Address);
+  }
+
   ngAfterViewInit() {
 
     Materialize.updateTextFields();
     $('.collapsible').collapsible();
 
-        $('.datepicker').pickadate({
-            selectMonths: true, // Creates a dropdown to control month
-            selectYears: 15, // Creates a dropdown of 15 years to control year
-            format: 'yyyy-mm-dd'
-        });
-        setTimeout(()=> {
-            Materialize.updateTextFields();
-        }, 0)
-    }
+    let $input = $('.datepicker').pickadate({
+      selectMonths: true, // Creates a dropdown to control month
+      selectYears: 15, // Creates a dropdown of 15 years to control year
+      format: 'yyyy-mm-dd'
+    })
+
+    let picker = $input.pickadate('picker');
+
+    picker.on({
+      close: () => {
+        this.account.customer.birthDate = picker.get();
+        console.log(this.account);
+      }
+    });
+
+    setTimeout(()=> {
+      Materialize.updateTextFields();
+    }, 0)
+  }
 }

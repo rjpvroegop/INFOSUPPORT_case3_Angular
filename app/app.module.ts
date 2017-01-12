@@ -20,7 +20,7 @@ const appRoutes: Routes = [
   {path: '', component: HomepageComponent},
   {path: 'products', component: ProductOverviewComponent},
   {path: 'product/:id', component: ProductDetailComponent},
-  {path: 'customer', component: CustomerOverviewComponent}
+  {path: 'customer', component: CustomerOverviewComponent},
   {path: 'customer/:id', component: CustomerOverviewComponent}
 ];
 
