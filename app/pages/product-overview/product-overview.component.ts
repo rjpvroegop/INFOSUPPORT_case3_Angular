@@ -1,14 +1,15 @@
 import {Component, Injectable} from '@angular/core';
 import {Product} from '../../model/product'
 import {Http, Response, Headers, RequestOptions} from '@angular/http';
+import {ProductService} from "../../service/product.service";
 @Component({
   moduleId: module.id,
   selector: 'product-overview-component',
   templateUrl: 'product-overview.component.html',
+  providers: [ProductService]
 })
 @Injectable()
 export class ProductOverviewComponent {
-  productUrl = "http://localhost:10001/bscatalogusbeheer/catalog/activeproducts ";
   title = "Overview Of Products";
   search_title = "";
   filter_by = "default";
@@ -21,28 +22,14 @@ export class ProductOverviewComponent {
   misc = true;
 
 
-  constructor(private http: Http) {
-    this.getProducts();
+  constructor(private http: Http, private productService: ProductService) {
+    this.productService.getActiveProducts()
+      .then(products => {
+        this.products = products;
+      });
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     $('select').material_select();
-  }
-
-  getProducts(){
-
-    this.http.get(this.productUrl)
-      .subscribe(
-        this.extractProducts.bind(this)
-      );
-  }
-
-  extractProducts(res){
-    let body = res.json();
-
-    this.products = body.map(product => {
-      product = <Product> product;
-      return product;
-    });
   }
 }

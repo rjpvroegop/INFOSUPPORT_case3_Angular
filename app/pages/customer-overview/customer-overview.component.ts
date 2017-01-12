@@ -6,32 +6,35 @@ import {ActivatedRoute} from "@angular/router";
 import {Component} from '@angular/core';
 import {Customer} from "../../model/Customer";
 import {materialize} from "rxjs/operator/materialize";
+import {AccountService} from "../../service/account.service";
 @Component({
   moduleId: module.id,
   selector: 'customer-overview',
-  templateUrl: 'customer-overview.component.html'
+  templateUrl: 'customer-overview.component.html',
+  providers: [AccountService]
 })
 
 export class CustomerOverviewComponent {
-  accountUrl = "http://localhost:10001/bsklantbeheer/accounts/";
-  saveAccountUrl = "http://localhost:10001/bsklantbeheer/customers/editcustomer";
-  newAccountUrl = "http://localhost:10001/bsklantbeheer/accounts/newaccount";
   title = "Overview Of Customers";
 
-  account = {
-    customer: {}
+  account: any = {
+    customer: {
+      addresses: []
+    }
   };
 
   newUser = true;
 
   sub: any;
 
-  constructor(private http: Http, private route: ActivatedRoute) {
+  constructor(private http: Http, private route: ActivatedRoute, private accountService: AccountService) {
   }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       let id = params['id'];
+
+      console.info(id);
 
       if (id != undefined) {
         this.newUser = false;
@@ -45,30 +48,16 @@ export class CustomerOverviewComponent {
   }
 
   getAccount(id: string) {
-    this.http.get(this.accountUrl + id)
-      .subscribe(
-        this.extractAccount.bind(this)
-      );
-  }
-
-  extractAccount(res) {
-    let body = res.json();
-    this.account = <Account> body;
-    console.log(body);
+    this.accountService.getAccount(id)
+      .then(account => this.account = account);
   }
 
   updateAccount() {
-    this.http.put(this.saveAccountUrl, this.account.customer).subscribe(console.log);
+    this.accountService.updateCustomer(this.account.customer);
   }
 
   newAccount() {
-    this.account.id = undefined;
-    this.account.customer.id = undefined;
-    this.http.post(this.newAccountUrl, this.account).subscribe(console.log);
-  }
-
-  clicked() {
-    console.log(this.account);
+    this.accountService.newAccount(this.account);
   }
 
   ngAfterViewInit() {
