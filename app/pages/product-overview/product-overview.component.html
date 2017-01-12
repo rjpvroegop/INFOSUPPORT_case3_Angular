@@ -1,0 +1,39 @@
+<nav-header></nav-header>
+<h3>{{title}}</h3>
+
+<div class="row">
+
+  <div class="col s4">
+    <label>Search</label>
+    <input [(ngModel)]="search_title" name="search_key">
+
+    <label>Sort By</label>
+    <p *ngFor="let option of filter_options">
+      <input type="radio" name="option" [(ngModel)]="filter_by" [value]="option" [id]="option">
+      <label [for]="option">
+        {{option}}
+      </label>
+    </p>
+
+    <p>
+      <input [(ngModel)]="bikes" type="checkbox" id="bike" />
+      <label for="bike">Bikes</label>
+    </p>
+    <p>
+      <input [(ngModel)]="misc" type="checkbox" id="misc" />
+      <label for="misc">Accessory</label>
+    </p>
+    <p>
+      <input [(ngModel)]="parts" type="checkbox" id="parts" />
+      <label for="parts">Parts</label>
+    </p>
+    <p>
+      <input [(ngModel)]="clothes" type="checkbox" id="clothes" />
+      <label for="clothes">Clothing</label>
+    </p>
+  </div>
+  <div class="col s8">
+    <product-thumbnail *ngFor='let product of products | search : search_title | category : bikes : parts : clothes : misc | sort : filter_by' [product]="product"></product-thumbnail>
+  </div>
+
+</div>

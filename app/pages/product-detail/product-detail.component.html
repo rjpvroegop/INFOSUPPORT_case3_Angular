@@ -1,0 +1,27 @@
+<nav-header></nav-header>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col s8">
+      <h3 class="kantilever-text-blue">{{product.name}}</h3>
+      <p>{{product.description}}</p>
+    </div>
+    <div class="col s4">
+      <img class="product_detail_img"  src="{{product.image}}" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <h5 class="kantilever-text-blue">Properties</h5>
+    </div>
+    <div class="col s2">
+      <p>Price:</p>
+      <p>Supplier:</p>
+    </div>
+    <div class="col s4">
+      <p>${{product.price}}</p>
+      <p>{{product.supplier.name}}</p>
+    </div>
+  </div>
+</div>
