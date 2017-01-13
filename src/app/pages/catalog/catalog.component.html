@@ -1,0 +1,62 @@
+<div class="row">
+
+  <!-- catalog header, sorting -->
+
+  <div class="col-sm-12">
+    <h1 class="pull-left">Catalogus</h1>
+
+    <div class="form-group pull-right">
+      <label for="sortby">Sort by:</label>
+      <select id="sortby" class="form-control" [(ngModel)]="sort_rule">
+        <option *ngFor="let sortrule of sort_options" [ngValue]="sortrule">{{sortrule}}</option>
+      </select>
+    </div>
+
+  </div>
+
+  <div class="col-sm-12">
+    <hr>
+  </div>
+
+  <!-- catalog sidebar -->
+
+  <div class="col-sm-2">
+    <div class="form-group">
+      <label for="search">Search</label>
+      <input type="text" class="form-control" id="search" placeholder="Searchterm" [(ngModel)]="search_term">
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" [(ngModel)]="show_bikes"> Bikes
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" [(ngModel)]="show_clothes"> Clothing
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" [(ngModel)]="show_parts"> Bicycle parts
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" [(ngModel)]="show_misc"> Accessory
+      </label>
+    </div>
+  </div>
+
+  <!-- catalog items -->
+
+  <div class="col-sm-10">
+    <div class="row">
+
+      <!-- not sure why, but the filter order seems important. Change the order and the dropdown will not filter. -->
+      <div class="col-sm-3"
+           *ngFor="let product of products | search : search_term | category : show_bikes : show_parts : show_clothes : show_misc | sort : sort_rule">
+        <product-thumbnail [product]="product"></product-thumbnail>
+      </div>
+    </div>
+  </div>
+</div>

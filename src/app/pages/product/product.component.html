@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-sm-8">
+    <h3 class="kantilever-text-blue">{{product.name}}</h3>
+    <p>{{product.description}}</p>
+  </div>
+  <div class="col-sm-4">
+    <img class="product_detail_img" src="{{product.image}}"/>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <h5 class="kantilever-text-blue">Properties</h5>
+  </div>
+  <div class="col-sm-2">
+    <p>Price:</p>
+    <p>Supplier:</p>
+  </div>
+  <div class="col-sm-4">
+    <p>{{product.price}}</p>
+    <p>{{product.supplier ? product.supplier.name : ''}}</p>
+  </div>
+</div>

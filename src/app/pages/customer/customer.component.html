@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="email" class="form-control" id="username" placeholder="Username" [(ngModel)]="account.userName">
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="account.password">
+  </div>
+
+  <div class="form-group">
+    <label for="firstName">firstName</label>
+    <input type="text" class="form-control" id="firstName" placeholder="firstName"
+           [(ngModel)]="account.customer.firstName">
+  </div>
+  <div class="form-group">
+    <label for="lastName">lastName</label>
+    <input type="text" class="form-control" id="lastName" placeholder="lastName"
+           [(ngModel)]="account.customer.lastName">
+  </div>
+  <div class="form-group">
+    <label for="email">email</label>
+    <input type="text" class="form-control" id="email" placeholder="email" [(ngModel)]="account.customer.email">
+  </div>
+  <div class="form-group">
+    <label for="phone">phone</label>
+    <input type="text" class="form-control" id="phone" placeholder="phone" [(ngModel)]="account.customer.phone">
+  </div>
+  <div class="form-group">
+    <label for="birthDate">birthDate</label>
+    <input type="text" class="form-control" id="birthDate" placeholder="birthDate"
+           [(ngModel)]="account.customer.birthDate">
+  </div>
+  <div class="form-group">
+    <label for="credit">credit</label>
+    <input type="text" class="form-control" id="credit" placeholder="credit" [(ngModel)]="account.customer.credit">
+  </div>
+
+  <button *ngIf="newCustomer" type="submit" class="btn btn-default" (click)="registerAccount(account)">
+    Register
+  </button>
+  <button *ngIf="!newCustomer" type="submit" class="btn btn-default" (click)="saveAccountInfo(account)">
+    Save info
+  </button>
+</div>

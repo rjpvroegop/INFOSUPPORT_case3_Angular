@@ -1,0 +1,28 @@
+h2 {
+  height: 33px;
+  overflow-y:hidden;
+  text-align:center;
+}
+
+.product-description {
+  height:60px;
+  overflow-y:hidden;
+}
+
+div.product-image {
+  height:100px;
+  width:100%;
+
+  position:relative;
+}
+
+div.product-image img {
+  display:block;
+  max-height:100px;
+  max-width:100%;
+
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translateX(-50%) translateY(-50%);
+}
