@@ -1,22 +1,25 @@
 <div class="row">
-  <div class="col-sm-8">
-    <h3 class="kantilever-text-blue">{{product.name}}</h3>
-    <p>{{product.description}}</p>
+  <div class="col-md-3">
+    <img src="{{product.image}}" alt="">
   </div>
-  <div class="col-sm-4">
-    <img class="product_detail_img" src="{{product.image}}"/>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-12">
-    <h5 class="kantilever-text-blue">Properties</h5>
-  </div>
-  <div class="col-sm-2">
-    <p>Price:</p>
-    <p>Supplier:</p>
-  </div>
-  <div class="col-sm-4">
-    <p>{{product.price}}</p>
-    <p>{{product.supplier ? product.supplier.name : ''}}</p>
+  <div class="col-md-9">
+    <h3>Product Details</h3>
+    <hr/>
+    <dl class="row">
+      <dt class="col-sm-4">Name</dt>
+      <dd class="col-sm-8">{{product.name}}</dd>
+
+      <dt class="col-sm-4">Description</dt>
+      <dd class="col-sm-8">{{product.description}}</dd>
+
+      <dt class="col-sm-4">Price</dt>
+      <dd class="col-sm-8">{{product.price}}</dd>
+
+      <dt class="col-sm-4">Supplier</dt>
+      <dd class="col-sm-8">{{product.supplier ? product.supplier.name : ''}}</dd>
+    </dl>
+    <hr/>
+    <a href="#" class="btn btn-primary">Add To Cart</a>
+
   </div>
 </div>
