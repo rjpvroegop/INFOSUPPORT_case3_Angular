@@ -18,6 +18,7 @@ import {SortPipe} from "./pipes/sort-pipe";
 import {FilterPipe} from "./pipes/filter-pipe";
 import {SearchPipe} from "./pipes/search-pipe";
 import {ShoppingcartComponent} from "./pages/shoppingcart/shoppingcart.component";
+import {ShoppingcartService} from "./services/shoppingcart.service";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -62,6 +63,7 @@ const appRoutes: Routes = [
     ProductService,
     AccountService,
     SupplierService,
+    ShoppingcartService,
   ],
   bootstrap: [AppComponent]
 })

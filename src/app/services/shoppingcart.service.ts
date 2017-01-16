@@ -54,7 +54,7 @@ export class ShoppingcartService {
   }
 
   private getOrder() {
-    let name = "KantileverOrder"
+    let name = "KantileverOrder";
     let ca: Array<string> = document.cookie.split(';');
     let caLen: number = ca.length;
     let cookieName = name + "=";

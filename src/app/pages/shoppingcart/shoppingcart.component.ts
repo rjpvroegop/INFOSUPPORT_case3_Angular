@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Order} from "../../models/order";
 import {Orderitem} from "../../models/orderitem";
 import {Product} from "../../models/product";
+import {ShoppingcartService} from "../../services/shoppingcart.service";
 
 @Component({
   moduleId: module.id,
@@ -16,13 +17,13 @@ export class ShoppingcartComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  constructor() {
+  constructor(private shoppingcartService: ShoppingcartService) {
     this.order.orderitems = [];
     this.addDummyItemToCart(1);
   }
 
   increaseAmount(product: Product){
-
+    this.shoppingcartService.addProduct(product);
   }
 
   decreaseAmount(product: Product){
