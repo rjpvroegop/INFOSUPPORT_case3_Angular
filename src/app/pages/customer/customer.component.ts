@@ -3,6 +3,7 @@ import {AccountService} from "../../services/account.service";
 import {ActivatedRoute} from "@angular/router";
 import {Account} from "../../models/account";
 import {Customer} from "../../models/customer";
+import {Address} from "../../models/address";
 
 @Component({
   moduleId: module.id,
@@ -19,7 +20,10 @@ export class CustomerComponent {
     this.account.customer = new Customer();
     this.account.customer.addresses = [];
 
+
     this.route.params.subscribe(params => {
+
+      console.log(params['id'])
       if (params['id'] != undefined) {
         this.newCustomer = false;
 
@@ -34,6 +38,14 @@ export class CustomerComponent {
         this.account = <Account> account;
         console.log(this.account);
       });
+  }
+
+  private addAddress() {
+    let address = new Address;
+    address.street = "Street"
+    address.city = "City"
+    address.id = ""
+    this.account.customer.addresses.push(address)
   }
 
   private registerAccount(account: Account) {
