@@ -7,6 +7,7 @@ WORKDIR /myangularapp
 
 # Install dependencies
 RUN npm install
+RUN npm install -g angular-cli
 
 # Tell Docker we are going to use this port
 EXPOSE 3000 3001

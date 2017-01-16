@@ -1,0 +1,70 @@
+<div class="row">
+  <div class="col-md-2">
+    <strong><i class="glyphicon glyphicon-search"></i> Compare Products</strong>
+    <hr>
+    <!-- Left column -->
+    <ul class="nav nav-stacked">
+      <li>
+        <p>
+          <strong>Search</strong>
+          <input type="text" class="form-control" id="search" placeholder="Searchterm" [(ngModel)]="search_term">
+        </p>
+      </li>
+      <li>
+          <strong>Show:</strong>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" [(ngModel)]="show_bikes"> Bikes
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" [(ngModel)]="show_clothes"> Clothing
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" [(ngModel)]="show_parts"> Bicycle parts
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" [(ngModel)]="show_misc"> Accessory
+          </label>
+        </div>
+      </li>
+      <li>
+        <strong>Suppliers:</strong>
+        <div class="checkbox" *ngFor="let supplier of suppliers">
+          <label>
+            <input type="checkbox" [(ngModel)]="supplier.state"> {{supplier.name}}
+          </label>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <!-- /col-3 -->
+  <div class="col-md-10">
+    <a href="#"><strong><i class="glyphicon glyphicon-th"></i> Catalog</strong></a>
+    <hr>
+
+    <div class="row">
+      <!-- center left-->
+      <div class="col-sm-12">
+        <div class="form-inline pull-right">
+          <strong>Sort By:</strong>
+          <select id="sortby" class="form-control input-sm" [(ngModel)]="sort_rule">
+            <option *ngFor="let sortrule of sort_options" [ngValue]="sortrule">{{sortrule}}</option>
+          </select>
+        </div>
+      </div>
+      <hr>
+      <div class="col-sm-6 col-md-3"
+        *ngFor="let product of products | search : search_term | category : show_bikes : show_parts : show_clothes : show_misc : suppliers | sort : sort_rule">
+        <product-thumbnail [product]="product"></product-thumbnail>
+      </div>
+    </div>
+    <!--/row-->
+
+  </div>
+</div>

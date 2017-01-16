@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  border-radius: 0 !important;
+}
+
+app-root {
+  display: block;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header-navigation, catalog-page, customer-page, home-page, product-page {
+  display: block;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.popupmessage {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display:none;
+}
