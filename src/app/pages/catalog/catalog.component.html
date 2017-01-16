@@ -6,10 +6,8 @@
     <ul class="nav nav-stacked">
       <li>
         <p>
-          <strong>Sort By:</strong>
-          <select id="sortby" class="form-control" [(ngModel)]="sort_rule">
-            <option *ngFor="let sortrule of sort_options" [ngValue]="sortrule">{{sortrule}}</option>
-          </select>
+          <strong>Search</strong>
+          <input type="text" class="form-control" id="search" placeholder="Searchterm" [(ngModel)]="search_term">
         </p>
       </li>
       <li>
@@ -43,12 +41,6 @@
           </label>
         </div>
       </li>
-      <li>
-        <p>
-          <strong>Find</strong>
-          <input type="text" class="form-control" id="search" placeholder="Searchterm" [(ngModel)]="search_term">
-        </p>
-      </li>
     </ul>
   </div>
   <!-- /col-3 -->
@@ -58,7 +50,15 @@
 
     <div class="row">
       <!-- center left-->
-
+      <div class="col-sm-12">
+        <div class="form-inline pull-right">
+          <strong>Sort By:</strong>
+          <select id="sortby" class="form-control input-sm" [(ngModel)]="sort_rule">
+            <option *ngFor="let sortrule of sort_options" [ngValue]="sortrule">{{sortrule}}</option>
+          </select>
+        </div>
+      </div>
+      <hr>
       <div class="col-sm-6 col-md-3"
         *ngFor="let product of products | search : search_term | category : show_bikes : show_parts : show_clothes : show_misc : suppliers | sort : sort_rule">
         <product-thumbnail [product]="product"></product-thumbnail>

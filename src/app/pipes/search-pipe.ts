@@ -10,8 +10,9 @@ export class SearchPipe implements PipeTransform {
     return values.filter((item: Product) => {
       let foundName = this.findString(item.name, key_title);
       let foundPrice = this.findString(String(item.price), key_title);
+      let foundSupplier = this.findString(item.supplier.name, key_title);
 
-      return foundName || foundPrice;
+      return foundName || foundPrice || foundSupplier;
     });
   }
 

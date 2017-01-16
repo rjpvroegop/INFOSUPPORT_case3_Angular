@@ -44,7 +44,6 @@ export class CustomerComponent {
     let address = new Address;
     address.street = "Street"
     address.city = "City"
-    address.id = ""
     this.account.customer.addresses.push(address)
   }
 
