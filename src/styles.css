@@ -18,3 +18,11 @@ header-navigation, catalog-page, customer-page, home-page, product-page {
   flex-direction: row;
   flex-wrap: wrap;
 }
+
+.popupmessage {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display:none;
+}

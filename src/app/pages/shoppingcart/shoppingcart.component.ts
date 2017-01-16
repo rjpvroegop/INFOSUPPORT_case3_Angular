@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Product} from "../../models/product";
 import {ShoppingcartService} from "../../services/shoppingcart.service";
 
@@ -8,7 +8,10 @@ import {ShoppingcartService} from "../../services/shoppingcart.service";
   templateUrl: 'shoppingcart.component.html',
   styleUrls: ['shoppingcart.component.css']
 })
-export class ShoppingcartComponent {
+export class ShoppingcartComponent implements OnInit {
+  ngOnInit(): void {
+    // console.log(this.shoppingcartService.getOrder());
+  }
 
   constructor(public shoppingcartService: ShoppingcartService) {
   }
@@ -22,6 +25,6 @@ export class ShoppingcartComponent {
   }
 
   clearProduct(product: Product){
-
+    this.shoppingcartService.clearProduct(product);
   }
 }
