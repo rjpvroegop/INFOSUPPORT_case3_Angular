@@ -1,6 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {Product} from "../../models/product";
 import {ProductService} from "../../services/product.service";
+import {SupplierService} from "../../services/supplier.service";
+import {Supplier} from "../../models/supplier";
 
 @Component({
   moduleId: module.id,
@@ -10,6 +12,7 @@ import {ProductService} from "../../services/product.service";
 })
 export class CatalogComponent{
   products: Product[] = [];
+  suppliers: Supplier[] = [];
   sort_options: string[] = ['name', 'price'];
   show_bikes = true;
   show_clothes = true;
@@ -18,10 +21,15 @@ export class CatalogComponent{
   sort_rule: string = '';
   search_term: string = '';
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService, private supplierService: SupplierService) {
     this.productService.getActiveProducts()
       .then(products => {
         this.products = <Product[]> products;
       });
+
+    this.supplierService.getSuppliers()
+      .then(suppliers => {
+        this.suppliers = <Supplier[]> suppliers;
+    });
   }
 }

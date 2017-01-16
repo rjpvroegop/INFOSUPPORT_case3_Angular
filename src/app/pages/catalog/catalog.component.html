@@ -13,7 +13,6 @@
         </p>
       </li>
       <li>
-        <p>
           <strong>Show:</strong>
         <div class="checkbox">
           <label>
@@ -37,6 +36,14 @@
         </div>
       </li>
       <li>
+        <strong>Suppliers:</strong>
+        <div class="checkbox" *ngFor="let supplier of suppliers">
+          <label>
+            <input type="checkbox" [(ngModel)]="supplier.state"> {{supplier.name}}
+          </label>
+        </div>
+      </li>
+      <li>
         <p>
           <strong>Find</strong>
           <input type="text" class="form-control" id="search" placeholder="Searchterm" [(ngModel)]="search_term">
@@ -53,8 +60,8 @@
     <div class="row">
       <!-- center left-->
 
-      <div class="col-sm-1 col-md-2"
-        *ngFor="let product of products | search : search_term | category : show_bikes : show_parts : show_clothes : show_misc | sort : sort_rule">
+      <div class="col-sm-6 col-md-3"
+        *ngFor="let product of products | search : search_term | category : show_bikes : show_parts : show_clothes : show_misc : suppliers | sort : sort_rule">
         <product-thumbnail [product]="product"></product-thumbnail>
       </div>
     </div>

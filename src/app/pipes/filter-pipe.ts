@@ -1,28 +1,38 @@
 import {Pipe, PipeTransform} from '@angular/core';
+import {Supplier} from "../models/supplier";
 
 @Pipe({
-  name: "category"
+  name: "category",
+  pure: false
 })
 export class FilterPipe implements PipeTransform {
-  transform(values: any, bikes: boolean, parts: boolean, clothes: boolean, misc: boolean): any[] {
+  transform(values: any, bikes: boolean, parts: boolean, clothes: boolean, misc: boolean, suppliers: Supplier[]): any[] {
     return values.filter((item) => {
       let [bikeId, partId, clothesId, miscId] = [1, 2, 3, 4];
 
-      let isValidForThisFilter = false;
+      let isValidForCategory = false;
 
       item.categoryList.forEach(category => {
         if (category.id == bikeId) {
-          isValidForThisFilter = bikes;
+          isValidForCategory = bikes;
         } else if (category.id == partId) {
-          isValidForThisFilter = parts;
+          isValidForCategory = parts;
         } else if (category.id == clothesId) {
-          isValidForThisFilter = clothes;
+          isValidForCategory = clothes;
         } else if (category.id == miscId) {
-          isValidForThisFilter = misc;
+          isValidForCategory = misc;
         }
       });
 
-      return isValidForThisFilter;
+      let isValidForSupplier = false;
+
+      suppliers.forEach(supplier => {
+        if (item.supplier.id == supplier.id){
+          isValidForSupplier = supplier.state
+        }
+      })
+
+      return isValidForCategory && isValidForSupplier;
     });
   }
 }

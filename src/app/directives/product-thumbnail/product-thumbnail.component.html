@@ -2,15 +2,13 @@
   <img [src]="product.image" alt="product_image">
   <hr/>
   <p><strong>{{product.name}}</strong></p>
-  <p><strong>{{product.description}}</strong></p>
-  <p><strong>{{product.price}}</strong></p>
+  <p><strong>${{product.price}}</strong></p>
   <div class="row">
     <div class="col-md-6">
-      <a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
+      <a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
     </div>
     <div class="col-md-6">
-      <a routerLink="/product/{{product.id}}"><span class="glyphicon glyphicon-tag"></span> Details</a>
+      <a routerLink="/product/{{product.id}}" class="btn btn-primary"><span class="glyphicon glyphicon-tag"></span> Details</a>
     </div>
   </div>
-  <a href="#" class="btn btn-primary">Add To Cart</a>
 </div>

@@ -13,6 +13,7 @@ import {HeaderComponent} from "./directives/header/header.component";
 import {ProductThumbnailComponent} from "./directives/product-thumbnail/product-thumbnail.component";
 import {ProductService} from "./services/product.service";
 import {AccountService} from "./services/account.service";
+import {SupplierService} from "./services/supplier.service";
 import {SortPipe} from "./pipes/sort-pipe";
 import {FilterPipe} from "./pipes/filter-pipe";
 import {SearchPipe} from "./pipes/search-pipe";
@@ -57,6 +58,7 @@ const appRoutes: Routes = [
     // services
     ProductService,
     AccountService,
+    SupplierService,
   ],
   bootstrap: [AppComponent]
 })
