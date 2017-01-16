@@ -8,6 +8,7 @@ export class ShoppingcartService {
   order: Order = new Order();
 
   constructor(){
+    this.order.orderitems = [];
     this.getOrder();
   }
 
@@ -53,7 +54,7 @@ export class ShoppingcartService {
   }
 
   private saveOrder() {
-    let path = ""
+    let path = "";
     let d: Date = new Date();
     d.setTime(d.getTime() + 30 * 24 * 60 * 60 * 1000);
     let expires: string = "expires=" + d.toUTCString();
@@ -61,7 +62,7 @@ export class ShoppingcartService {
     document.cookie = "KantileverOrder" + "=" + value + "; " + expires + (path.length > 0 ? "; path=" + path : "");
   }
 
-  private getOrder() {
+  getOrder() {
     let name = "KantileverOrder";
     let ca: Array<string> = document.cookie.split(';');
     let caLen: number = ca.length;
@@ -70,10 +71,11 @@ export class ShoppingcartService {
 
     for (let i: number = 0; i < caLen; i += 1) {
       c = ca[i].replace(/^\s\+/g, "");
-      if (~c.indexOf(cookieName)) {
+      if (c.indexOf(cookieName) == 0) {
         this.order = JSON.parse(c.substring(cookieName.length, c.length));
         console.log(this.order);
       }
     }
+    return this.order;
   }
 }
