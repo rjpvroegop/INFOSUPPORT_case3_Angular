@@ -17,13 +17,15 @@ import {SupplierService} from "./services/supplier.service";
 import {SortPipe} from "./pipes/sort-pipe";
 import {FilterPipe} from "./pipes/filter-pipe";
 import {SearchPipe} from "./pipes/search-pipe";
+import {ShoppingcartComponent} from "./pages/shoppingcart/shoppingcart.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'catalog', component: CatalogComponent},
   {path: 'product/:id', component: ProductComponent},
   {path: 'customer', component: CustomerComponent},
-  {path: 'customer/:id', component: CustomerComponent}
+  {path: 'customer/:id', component: CustomerComponent},
+  {path: 'shoppingcart', component: ShoppingcartComponent}
 ];
 
 @NgModule({
@@ -36,6 +38,7 @@ const appRoutes: Routes = [
     CatalogComponent,
     ProductComponent,
     CustomerComponent,
+    ShoppingcartComponent,
 
     // directives
     HeaderComponent,

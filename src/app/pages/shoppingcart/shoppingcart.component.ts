@@ -1,10 +1,16 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
-    moduleId: module.id,
-    selector: 'shopping-cart',
-    templateUrl: 'shoppingcart.component.html'
+  moduleId: module.id,
+  selector: 'shopping-cart',
+  templateUrl: 'shoppingcart.component.html',
+  styleUrls: ['shoppingcart.component.css']
 })
-export class ShoppingcartComponent {
-    constructor() { }
+export class ShoppingcartComponent implements OnInit {
+  ngOnInit(): void {
+    $('[data-toggle="popover"]').popover()
+  }
+
+  constructor() {
+  }
 }

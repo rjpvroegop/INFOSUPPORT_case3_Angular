@@ -1,1 +1,18 @@
-SHoppingart
+
+.shoppingcart-icon-large {
+  margin-left:10%;
+  color:rgba(0,0,0,0.8);
+  font-size:60px;
+  display:inline-block;
+  color:rgba(45,57,142, 0.8);
+}
+
+.shoppingcart-icon-small {
+  color:rgba(45,57,142, 0.5);
+  font-size:40px;
+  display:inline-block;
+}
+
+h1 {
+  color:rgba(45,57,142, 1);
+}
