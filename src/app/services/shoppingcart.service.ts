@@ -27,7 +27,6 @@ export class ShoppingcartService {
       this.order.orderitems.push(orderitem)
     }
     this.saveOrder();
-    this.getOrder();//just for testing
   }
 
   removeProduct(product: Product) {
@@ -42,7 +41,16 @@ export class ShoppingcartService {
       }
     }
     this.saveOrder();
-    this.getOrder();//just for testing
+  }
+
+  clearProduct(product: Product) {
+    for (let orderItem of this.order.orderitems) {
+      if (orderItem.product.id == product.id) {
+        let i = this.order.orderitems.indexOf(orderItem)
+        this.order.orderitems.slice(i, 1)
+      }
+    }
+    this.saveOrder();
   }
 
   private saveOrder() {
@@ -63,8 +71,9 @@ export class ShoppingcartService {
 
     for (let i: number = 0; i < caLen; i += 1) {
       c = ca[i].replace(/^\s\+/g, "");
-      if (~c.indexOf(cookieName)) {
-        this.order = JSON.parse(c.substring(cookieName.length + 1, c.length));
+      if (c.indexOf(cookieName) == 0) {
+        this.order = JSON.parse(c.substring(cookieName.length, c.length));
+        console.log(this.order);
       }
     }
     return this.order;
