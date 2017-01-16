@@ -1,12 +1,12 @@
 <div class="row">
-  <div class="col-sm-6">
+  <div class="col-sm-3">
 
     <h1 class="shoppingcart-icon-large"><span class="glyphicon glyphicon-shopping-cart"></span></h1>
     <h1 class="shoppingcart-icon-small"><span class="glyphicon glyphicon-shopping-cart"></span></h1>
     <h1>Shoppingcart</h1>
   </div>
 
-  <div class="col-sm-6">
+  <div class="col-sm-9">
     <table class="table">
       <caption>Shopping cart contents:</caption>
       <thead>
@@ -19,12 +19,27 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Test</td>
-        <td>Dit is een product</td>
-        <td>€20,00</td>
-        <td><span class="glyphicon glyphicon-triangle-bottom" data-toggle="popover" title="Edit" data-content=""></span></td>
+      <tr *ngFor="let oi of order.orderitems">
+        <th scope="row">{{oi.amount}}</th>
+        <td>{{oi.product.name}}</td>
+        <td>{{oi.product.description}}</td>
+        <td>${{oi.product.price}}</td>
+        <td>
+          <div>
+            <button class="btn btn-sm btn-success" (click)="increaseAmount(product)">
+              <span class="glyphicon glyphicon-plus"></span>
+            </button>
+            <button class="btn btn-sm btn-warning" (click)="decreaseAmount(product)">
+              <span class="glyphicon glyphicon-minus"></span>
+            </button>
+            <button class="btn btn-sm btn-danger" (click)="removeProduct(product)">
+              <span class="glyphicon glyphicon-remove"></span>
+            </button>
+            <a href="/product/{{oi.product.id}}" class="btn btn-sm btn-primary">
+              Details
+            </a>
+          </div>
+        </td>
       </tr>
       </tbody>
     </table>
