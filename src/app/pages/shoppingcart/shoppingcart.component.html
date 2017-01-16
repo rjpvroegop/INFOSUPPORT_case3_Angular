@@ -19,20 +19,20 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let oi of order.orderitems">
+      <tr *ngFor="let oi of shoppingcartService.order.orderitems">
         <th scope="row">{{oi.amount}}</th>
         <td>{{oi.product.name}}</td>
         <td>{{oi.product.description}}</td>
         <td>${{oi.product.price}}</td>
         <td>
           <div>
-            <button class="btn btn-sm btn-success" (click)="increaseAmount(product)">
+            <button class="btn btn-sm btn-success" (click)="addProduct(oi.product)">
               <span class="glyphicon glyphicon-plus"></span>
             </button>
-            <button class="btn btn-sm btn-warning" (click)="decreaseAmount(product)">
+            <button class="btn btn-sm btn-warning" (click)="removeProduct(oi.product)">
               <span class="glyphicon glyphicon-minus"></span>
             </button>
-            <button class="btn btn-sm btn-danger" (click)="removeProduct(product)">
+            <button class="btn btn-sm btn-danger" (click)="clearProduct(oi.product)">
               <span class="glyphicon glyphicon-remove"></span>
             </button>
             <a href="/product/{{oi.product.id}}" class="btn btn-sm btn-primary">
