@@ -19,7 +19,7 @@
       <dd class="col-sm-8">{{product.supplier ? product.supplier.name : ''}}</dd>
     </dl>
     <hr/>
-    <a href="#" class="btn btn-primary">Add To Cart</a>
+    <a class="btn btn-primary" (click)="addProductToCart(product)">Add To Cart</a>
 
   </div>
 </div>

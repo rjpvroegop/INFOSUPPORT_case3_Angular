@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {ShoppingcartService} from "../../services/shoppingcart.service";
 
 @Component({
   moduleId: module.id,
@@ -7,6 +8,6 @@ import {Component} from '@angular/core';
   styleUrls: ['header.component.css']
 })
 export class HeaderComponent {
-  constructor() {
+  constructor(private shoppingcartService: ShoppingcartService) {
   }
 }

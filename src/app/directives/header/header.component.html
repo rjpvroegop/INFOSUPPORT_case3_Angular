@@ -16,8 +16,9 @@
         <li><a href="customer">Customer</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Sign up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Log in</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Log in</a></li>
+        <li><a href="shoppingcart"><span class="glyphicon glyphicon-shopping-cart"></span> Shoppingcart <span class="label label-primary">{{shoppingcartService.getOrder().orderitems.length}}</span></a></li>
       </ul>
     </div>
   </div>
