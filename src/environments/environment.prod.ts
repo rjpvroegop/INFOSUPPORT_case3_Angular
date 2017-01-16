@@ -1,5 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  url: 'http://localhost:10001'
 };
-
-(<any>window).url = '127.0.0.1';

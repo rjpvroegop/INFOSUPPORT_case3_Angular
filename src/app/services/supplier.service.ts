@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
 import {Http} from "@angular/http";
 import {Supplier} from "../models/supplier";
+import {environment} from "../../environments/environment";
 
 @Injectable()
 export class SupplierService {
-  private suppliersUrl = "http://localhost:10001/bscatalogusbeheer/suppliers";
+  private suppliersUrl = environment.url + "/bscatalogusbeheer/suppliers";
 
   constructor(private http: Http) {
   }

@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Http} from "@angular/http";
 import {Account} from "../models/account";
+import {environment} from "../../environments/environment";
 
 @Injectable()
 export class AccountService {
-  accountUrl = "http://localhost:10001/bsklantbeheer/accounts/";
-  saveCustomerUrl = "http://localhost:10001/bsklantbeheer/customers/editcustomer";
-  newAccountUrl = "http://localhost:10001/bsklantbeheer/accounts/newaccount";
+  accountUrl = environment.url + "/bsklantbeheer/accounts/";
+  saveCustomerUrl = environment.url + "/bsklantbeheer/customers/editcustomer";
+  newAccountUrl = environment.url + "/bsklantbeheer/accounts/newaccount";
 
   constructor(private http: Http) {
   }
