@@ -21,19 +21,22 @@ export class ProductThumbnailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.stockService.getStock(this.product.id)
-      .then((stockitem: Stockitem) => {
-        $(`.${this.product.id}stockamount`).html(String(stockitem.stock));
-        this.stock = stockitem.stock;
-      });
   }
 
   addProductToCart(product: Product) {
-    if(this.stock <= 0){
-      new popupMessage('Please note:', 'This product is out of stock. Delivery may take some time.', 'warning')
-    }
+    this.stockService.getStock(this.product.id)
+      .then((stockitem: Stockitem) => {
+        this.stock = stockitem.stock;
+      })
+      .then(()=>{
 
-    this.shoppingcartService.addProduct(product);
+
+      if(this.stock <= 0){
+        new popupMessage('Please note:', 'This product is out of stock. Delivery may take some time.', 'warning')
+      }
+
+      this.shoppingcartService.addProduct(product);
+    });
   }
 
 }

@@ -9,4 +9,5 @@ export class Product {
   availabelUntil: string;
   supplier: Supplier;
   image: string;
+  stock: Stockitem;
 }

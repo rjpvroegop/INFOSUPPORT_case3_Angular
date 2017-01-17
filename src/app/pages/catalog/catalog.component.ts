@@ -33,5 +33,14 @@ export class CatalogComponent{
       .then(suppliers => {
         this.suppliers = <Supplier[]> suppliers;
     });
+
+    // this.stockService.getAllStock()
+    //   .then(stocks => {
+    //     this.products.map(product => {
+    //       stocks.forEach(stock => {
+    //         if(product.id == stock.productId)
+    //       })
+    //     })
+    //   })
   }
 }
