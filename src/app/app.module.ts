@@ -17,6 +17,9 @@ import {SupplierService} from "./services/supplier.service";
 import {SortPipe} from "./pipes/sort-pipe";
 import {FilterPipe} from "./pipes/filter-pipe";
 import {SearchPipe} from "./pipes/search-pipe";
+import {ShoppingcartComponent} from "./pages/shoppingcart/shoppingcart.component";
+import {ShoppingcartService} from "./services/shoppingcart.service";
+import {OrderpricePipe} from "./pipes/orderprice-pipe";
 import { MyDatePickerModule } from 'mydatepicker';
 
 const appRoutes: Routes = [
@@ -24,7 +27,8 @@ const appRoutes: Routes = [
   {path: 'catalog', component: CatalogComponent},
   {path: 'product/:id', component: ProductComponent},
   {path: 'customer', component: CustomerComponent},
-  {path: 'customer/:id', component: CustomerComponent}
+  {path: 'customer/:id', component: CustomerComponent},
+  {path: 'shoppingcart', component: ShoppingcartComponent}
 ];
 
 @NgModule({
@@ -37,6 +41,7 @@ const appRoutes: Routes = [
     CatalogComponent,
     ProductComponent,
     CustomerComponent,
+    ShoppingcartComponent,
 
     // directives
     HeaderComponent,
@@ -46,6 +51,7 @@ const appRoutes: Routes = [
     SortPipe,
     FilterPipe,
     SearchPipe,
+    OrderpricePipe,
 
   ],
   imports: [
@@ -61,6 +67,7 @@ const appRoutes: Routes = [
     ProductService,
     AccountService,
     SupplierService,
+    ShoppingcartService,
   ],
   bootstrap: [AppComponent]
 })

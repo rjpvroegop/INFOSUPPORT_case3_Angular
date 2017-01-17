@@ -1,0 +1,65 @@
+<div class="row">
+
+  <div class="col-sm-12" *ngIf="!shoppingcartService.getOrder().orderitems.length > 0">
+    <h1>Your shoppingcart is empty. Find products in the <a href="/catalog">Catalog</a>.</h1>
+  </div>
+
+  <div class="col-sm-12" *ngIf="shoppingcartService.getOrder().orderitems.length > 0">
+    <table class="table">
+      <caption><span class="glyphicon glyphicon-shopping-cart"></span> contents:
+        <hr>
+      </caption>
+      <thead>
+      <tr>
+        <th></th>
+        <th>Product</th>
+        <th>Price</th>
+        <th>amount</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let oi of shoppingcartService.getOrder().orderitems">
+        <td><img [src]="oi.product.image" style="max-height:40px;max-width:40px;"></td>
+        <td>{{oi.product.name}}</td>
+        <td>${{oi.product.price}}</td>
+        <th scope="row">{{oi.amount}}</th>
+        <td>
+          <div class="row">
+            <div class="col-sm-3">
+              <button class="btn btn-sm btn-success" (click)="addProduct(oi.product)">
+                <span class="glyphicon glyphicon-plus"></span>
+              </button>
+            </div>
+            <div class="col-sm-3">
+              <button class="btn btn-sm btn-warning" (click)="removeProduct(oi.product)">
+                <span class="glyphicon glyphicon-minus"></span>
+              </button>
+            </div>
+            <div class="col-sm-3">
+              <button class="btn btn-sm btn-danger" (click)="clearProduct(oi.product)">
+                <span class="glyphicon glyphicon-remove"></span>
+              </button>
+            </div>
+            <div class="col-sm-3">
+              <a href="/product/{{oi.product.id}}" class="btn btn-sm btn-primary">
+                Details
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3>Total: ${{(shoppingcartService.getOrder() | orderprice).toFixed(2)}}</h3>
+    <button class="btn btn-sm btn-danger" (click)="shoppingcartService.emptyCart()">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+  </div>
+  <div class="col-sm-12">
+    <hr>
+    <h1 class="shoppingcart-icon-large"><span class="glyphicon glyphicon-shopping-cart"></span></h1>
+    <h1 class="shoppingcart-icon-small"><span class="glyphicon glyphicon-shopping-cart"></span></h1>
+  </div>
+</div>

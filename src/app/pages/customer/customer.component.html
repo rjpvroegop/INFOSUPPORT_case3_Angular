@@ -52,41 +52,34 @@
                       (dateChanged)="onDateChanged($event)"></my-date-picker>
     </p>
   </div>
-  <div class="row">
-    <div class="col-md-6">
-      <h3>Addresses</h3>
-    </div>
-    <div class="col-md-6">
-      <a href="#" class="btn btn-primary pull-right">Add Address</a>
-    </div>
-  </div>
+  <h3>Addresses</h3>
   <hr/>
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-      <div class="panel panel-default">
+      <div class="panel panel-default" *ngFor="let address of account.customer.addresses; let i = index">
         <div class="panel-heading" role="tab" id="headingOne">
           <h4 class="panel-title">
-            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              Collapsible Group Item #1
+            <a role="button" data-toggle="collapse" data-parent="#accordion" [href]="'#address' + i" aria-expanded="true" aria-controls="collapseOne">
+              {{address.street}} {{address.city}}
             </a>
           </h4>
         </div>
-        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+        <div id="address{{i}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
           <div class="panel-body">
             <div class="form-group">
               <label for="street">Street</label>
-              <input type="text" class="form-control" id="street" placeholder="Street" name="street">
+              <input type="text" class="form-control" id="street" placeholder="Street" [(ngModel)]="address.street">
             </div>
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="city">City</label>
-                  <input type="text" class="form-control" id="city" placeholder="City" name="city">
+                  <input type="text" class="form-control" id="city" placeholder="City" [(ngModel)]="address.city">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="zipCode">Zip Code</label>
-                  <input type="text" class="form-control" id="zipCode" placeholder="Zip Code" name="zipCode">
+                  <input type="text" class="form-control" id="zipCode" placeholder="Zip Code" [(ngModel)]="address.zip">
                 </div>
               </div>
             </div>
@@ -94,6 +87,7 @@
         </div>
       </div>
     </div>
+    <a class="btn btn-primary pull-right" (click)="addAddress()">Add Address</a>
   <a href="#" class="btn btn-primary">Save Account</a>
   <button *ngIf="newCustomer" type="submit" class="btn btn-primary pull-right" (click)="registerAccount(account)">
     Register

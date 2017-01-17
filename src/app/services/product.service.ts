@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Http} from "@angular/http";
 import {Product} from "../models/product";
+import {environment} from "../../environments/environment";
 
 @Injectable()
 export class ProductService {
-  private activeProductsUrl = "http://localhost:10001/bscatalogusbeheer/catalog/activeproducts";
-  private allProductsUrl = "http://localhost:10001/bscatalogusbeheer/catalog/products";
-  private singleProductUrl: string = "http://localhost:10001/bscatalogusbeheer/catalog/products/";
+  private activeProductsUrl = environment.url + "/bscatalogusbeheer/catalog/activeproducts";
+  private allProductsUrl = environment.url + "/bscatalogusbeheer/catalog/products";
+  private singleProductUrl: string = environment.url + "/bscatalogusbeheer/catalog/products/";
 
   constructor(private http: Http) {
   }
