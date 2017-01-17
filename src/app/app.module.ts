@@ -21,6 +21,7 @@ import {ShoppingcartComponent} from "./pages/shoppingcart/shoppingcart.component
 import {ShoppingcartService} from "./services/shoppingcart.service";
 import {OrderpricePipe} from "./pipes/orderprice-pipe";
 import { MyDatePickerModule } from 'mydatepicker';
+import {StockService} from "./services/stock.service";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -68,6 +69,7 @@ const appRoutes: Routes = [
     AccountService,
     SupplierService,
     ShoppingcartService,
+    StockService,
   ],
   bootstrap: [AppComponent]
 })

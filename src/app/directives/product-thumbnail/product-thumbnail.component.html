@@ -1,14 +1,12 @@
 <div class="thumbnail text-center">
-  <img [src]="product.image" alt="product_image">
+  <a routerLink="/product/{{product.id}}"><img [src]="product.image" alt="product_image"></a>
   <hr/>
   <p><strong>{{product.name}}</strong></p>
   <p><strong>${{product.price}}</strong></p>
+  <p>Stock: <strong class="{{product.id}}stockamount"><span class="glyphicon glyphicon-repeat rotating"></span></strong></p>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
       <a class="btn btn-primary" (click)="addProductToCart(product)"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
-    </div>
-    <div class="col-md-6">
-      <a routerLink="/product/{{product.id}}" class="btn btn-primary"><span class="glyphicon glyphicon-tag"></span> Details</a>
     </div>
   </div>
 </div>
