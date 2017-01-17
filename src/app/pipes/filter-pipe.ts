@@ -1,4 +1,4 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import {Pipe, PipeTransform} from "@angular/core";
 import {Supplier} from "../models/supplier";
 
 @Pipe({
@@ -30,7 +30,7 @@ export class FilterPipe implements PipeTransform {
         if (item.supplier.id == supplier.id){
           isValidForSupplier = supplier.state
         }
-      })
+      });
 
       return isValidForCategory && isValidForSupplier;
     });
