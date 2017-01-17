@@ -17,6 +17,7 @@ import {SupplierService} from "./services/supplier.service";
 import {SortPipe} from "./pipes/sort-pipe";
 import {FilterPipe} from "./pipes/filter-pipe";
 import {SearchPipe} from "./pipes/search-pipe";
+import { MyDatePickerModule } from 'mydatepicker';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -52,7 +53,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    MyDatePickerModule,
   ],
   providers: [
     // services

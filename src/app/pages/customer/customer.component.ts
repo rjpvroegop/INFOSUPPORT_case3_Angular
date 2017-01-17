@@ -1,8 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild, AfterViewChecked} from '@angular/core';
 import {AccountService} from "../../services/account.service";
 import {ActivatedRoute} from "@angular/router";
 import {Account} from "../../models/account";
 import {Customer} from "../../models/customer";
+import { NgForm } from '@angular/forms';
 
 @Component({
   moduleId: module.id,
@@ -42,5 +43,23 @@ export class CustomerComponent {
 
   private saveAccountInfo(account: Account) {
     this.accountService.updateCustomer(account.customer).then(console.log);
+  }
+
+  myDatePickerOptions = {
+    todayBtnTxt: 'Today',
+    dateFormat: 'yyyy-mm-dd',
+    firstDayOfWeek: 'mo',
+    sunHighlight: true,
+    height: '34px',
+    width: '260px',
+    editableDateField : false,
+    inline: false,
+    disableUntil: {year: 2016, month: 8, day: 10},
+    selectionTxtFontSize: '16px'
+  };
+
+  onDateChanged(event:any) {
+    this.account.customer.birthDate = event.formatted;
+    console.log(this.account.customer)
   }
 }
