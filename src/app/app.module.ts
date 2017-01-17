@@ -20,6 +20,7 @@ import {SearchPipe} from "./pipes/search-pipe";
 import {ShoppingcartComponent} from "./pages/shoppingcart/shoppingcart.component";
 import {ShoppingcartService} from "./services/shoppingcart.service";
 import {OrderpricePipe} from "./pipes/orderprice-pipe";
+import { MyDatePickerModule } from 'mydatepicker';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -58,7 +59,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    MyDatePickerModule,
   ],
   providers: [
     // services
