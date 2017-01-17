@@ -3,6 +3,8 @@ import {Product} from "../../models/product";
 import {ProductService} from "../../services/product.service";
 import {SupplierService} from "../../services/supplier.service";
 import {Supplier} from "../../models/supplier";
+import {StockService} from "../../services/stock.service";
+import {Stockitem} from "../../models/stockitem";
 
 @Component({
   moduleId: module.id,
@@ -21,7 +23,7 @@ export class CatalogComponent{
   sort_rule: string = '';
   search_term: string = '';
 
-  constructor(private productService: ProductService, private supplierService: SupplierService) {
+  constructor(private productService: ProductService, private supplierService: SupplierService, private stockService: StockService) {
     this.productService.getActiveProducts()
       .then(products => {
         this.products = <Product[]> products;
