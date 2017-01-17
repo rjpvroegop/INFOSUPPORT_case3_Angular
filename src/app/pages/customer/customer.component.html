@@ -6,7 +6,7 @@
       <div class="form-group">
         <label for="username">Username</label>
         <input type="text" class="form-control" id="username" placeholder="Username"
-               [(ngModel)]="account.userName" name="username" required minlength="3">
+               [(ngModel)]="account.userName" name="username" required>
       </div>
     </div>
     <div class="col-md-6">
@@ -67,19 +67,22 @@
           <div class="panel-body">
             <div class="form-group">
               <label for="street">Street</label>
-              <input type="text" class="form-control" id="street" placeholder="Street" [(ngModel)]="address.street">
+              <input type="text" class="form-control" id="street" placeholder="Street" [(ngModel)]="address.street"
+                     required name="street">
             </div>
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="city">City</label>
-                  <input type="text" class="form-control" id="city" placeholder="City" [(ngModel)]="address.city">
+                  <input type="text" class="form-control" id="city" placeholder="City" [(ngModel)]="address.city"
+                         required name="city">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="zipCode">Zip Code</label>
-                  <input type="text" class="form-control" id="zipCode" placeholder="Zip Code" [(ngModel)]="address.zip">
+                  <input type="text" class="form-control" id="zipCode" placeholder="Zip Code" [(ngModel)]="address.zip"
+                         required name="zipCode">
                 </div>
               </div>
             </div>

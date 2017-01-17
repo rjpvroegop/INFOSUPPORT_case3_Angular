@@ -43,6 +43,7 @@ export class CustomerComponent {
 
   private addAddress() {
     let address = new Address;
+    address.zip = "Zip Code"
     address.street = "Street"
     address.city = "City"
     this.account.customer.addresses.push(address)
