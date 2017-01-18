@@ -1,9 +1,8 @@
-import {Component, ViewChild, AfterViewChecked} from '@angular/core';
+import {Component} from "@angular/core";
 import {AccountService} from "../../services/account.service";
 import {ActivatedRoute} from "@angular/router";
 import {Account} from "../../models/account";
 import {Customer} from "../../models/customer";
-import { NgForm } from '@angular/forms';
 import {Address} from "../../models/address";
 
 @Component({
@@ -65,8 +64,8 @@ export class CustomerComponent {
     height: '34px',
     width: '260px',
     editableDateField : false,
+    disableSince : {year: 2017, month: 1, day: 17},
     inline: false,
-    disableUntil: {year: 2016, month: 8, day: 10},
     selectionTxtFontSize: '16px'
   };
 
