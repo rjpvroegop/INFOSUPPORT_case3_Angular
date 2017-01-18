@@ -11,26 +11,21 @@
         </p>
       </li>
       <li>
-          <strong>Show:</strong>
-        <div class="checkbox">
+        <strong>Categories:</strong>
+        <div class="checkbox" *ngFor="let category of (categories ? categories.slice(0,4):[])">
           <label>
-            <input type="checkbox" [(ngModel)]="show_bikes"> Bikes
+            <input type="checkbox" [(ngModel)]="category.state"> {{category.name}}
           </label>
         </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" [(ngModel)]="show_clothes"> Clothing
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" [(ngModel)]="show_parts"> Bicycle parts
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" [(ngModel)]="show_misc"> Accessory
-          </label>
+        <div *ngIf="categories.length > 4">
+          <div class="collapse" id="moreCategories">
+            <div class="checkbox" *ngFor="let category of categories | slice:4">
+              <label>
+                <input type="checkbox" [(ngModel)]="category.state"> {{category.name}}
+              </label>
+            </div>
+          </div>
+          <a data-toggle="collapse" data-target="#moreCategories">All categories</a>
         </div>
       </li>
       <li>
@@ -45,7 +40,9 @@
   </div>
   <!-- /col-3 -->
   <div class="col-md-10">
-    <a href="#"><strong><i class="glyphicon glyphicon-th"></i> Catalog</strong></a>
+    <a href="/catalog"><strong><i class="glyphicon glyphicon-th"></i> Catalog</strong></a>
+    <span *ngIf="param != undefined"> > </span>
+    <a *ngIf="param != undefined" href="/catalog/{{param}}"><strong>{{param}}</strong></a>
     <hr>
 
     <div class="row">
@@ -60,7 +57,7 @@
       </div>
       <hr>
       <div class="col-sm-6 col-md-3"
-        *ngFor="let product of products | search : search_term | category : show_bikes : show_parts : show_clothes : show_misc : suppliers | sort : sort_rule">
+           *ngFor="let product of products | search : search_term | categoryfilter : categories | supplierfilter : suppliers  | sort : sort_rule">
         <product-thumbnail [product]="product"></product-thumbnail>
       </div>
     </div>

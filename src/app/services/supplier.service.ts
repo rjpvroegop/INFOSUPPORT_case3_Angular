@@ -25,7 +25,7 @@ export class SupplierService {
 
     let suppliers = body.map(supplier => {
       supplier = <Supplier> supplier;
-      supplier.state = true;
+      supplier.state = false;
       return supplier;
     });
 

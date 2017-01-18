@@ -3,6 +3,9 @@ import {Product} from "../../models/product";
 import {ProductService} from "../../services/product.service";
 import {SupplierService} from "../../services/supplier.service";
 import {Supplier} from "../../models/supplier";
+import {Category} from "../../models/category";
+import {CategoryService} from "../../services/category.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   moduleId: module.id,
@@ -10,18 +13,31 @@ import {Supplier} from "../../models/supplier";
   templateUrl: 'catalog.component.html',
   styleUrls: ['catalog.component.css']
 })
-export class CatalogComponent{
+export class CatalogComponent {
   products: Product[] = [];
   suppliers: Supplier[] = [];
+  categories: Category[] = [];
   sort_options: string[] = ['name', 'price'];
-  show_bikes = true;
-  show_clothes = true;
-  show_parts = true;
-  show_misc = true;
   sort_rule: string = '';
   search_term: string = '';
+  param:string;
 
-  constructor(private productService: ProductService, private supplierService: SupplierService) {
+  constructor(private route: ActivatedRoute, private productService: ProductService, private supplierService: SupplierService, private categoryService: CategoryService) {
+
+    this.route.params.subscribe(params => {
+      this.param = params['category']
+      if (this.param != undefined) {
+        this.categoryService.getCategoriesForCategory(params['category'])
+          .then(categories => {
+            this.categories = <Category[]> categories;
+            if (this.categories.length == 0)
+              this.getCategories();
+          });
+      }else{
+        this.getCategories();
+      }
+    });
+
     this.productService.getActiveProducts()
       .then(products => {
         this.products = <Product[]> products;
@@ -30,6 +46,12 @@ export class CatalogComponent{
     this.supplierService.getSuppliers()
       .then(suppliers => {
         this.suppliers = <Supplier[]> suppliers;
-    });
+      });
+  }
+  private getCategories(){
+    this.categoryService.getCategories()
+      .then(categories => {
+        this.categories = <Category[]> categories;
+      });
   }
 }
