@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {Product} from "../../models/product";
 import {ProductService} from "../../services/product.service";
 import {SupplierService} from "../../services/supplier.service";
@@ -48,10 +48,6 @@ export class CatalogComponent {
       .then(suppliers => {
         this.suppliers = <Supplier[]> suppliers;
       });
-
-
-
-
   }
   private getCategories(){
     this.categoryService.getCategories()

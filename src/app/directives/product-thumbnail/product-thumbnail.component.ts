@@ -4,6 +4,7 @@ import {Input} from "@angular/core/src/metadata/directives";
 import {ShoppingcartService} from "../../services/shoppingcart.service";
 import {StockService} from "../../services/stock.service";
 import {Stockitem} from "../../models/stockitem";
+import {popupMessage} from "../../../assets/js/popup";
 
 @Component({
   moduleId: module.id,
@@ -13,18 +14,29 @@ import {Stockitem} from "../../models/stockitem";
 })
 export class ProductThumbnailComponent implements OnInit {
   @Input() product: Product;
+  stock: number = 0;
 
-  constructor(private shoppingcartService: ShoppingcartService, private stockService:StockService) {
+  constructor(private shoppingcartService: ShoppingcartService, private stockService: StockService) {
 
   }
 
   ngOnInit() {
-    this.stockService.getStock(this.product.id)
-      .then((stockitem: Stockitem) => $(`.${this.product.id}stockamount`).html(String(stockitem.stock)));
   }
 
-  addProductToCart(product: Product){
-    this.shoppingcartService.addProduct(product);
+  addProductToCart(product: Product) {
+    this.stockService.getStock(this.product.id)
+      .then((stockitem: Stockitem) => {
+        this.stock = stockitem.stock;
+      })
+      .then(()=>{
+
+
+      if(this.stock <= 0){
+        new popupMessage('Please note:', 'This product is out of stock. Delivery may take some time.', 'warning')
+      }
+
+      this.shoppingcartService.addProduct(product);
+    });
   }
 
 }

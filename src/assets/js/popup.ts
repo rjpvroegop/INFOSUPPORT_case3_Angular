@@ -1,6 +1,6 @@
 export class popupMessage {
   popups: string[] = [];
-  duration: number = 2000;
+  duration: number = 5000;
   width: number = 30;
 
   constructor(title: string, message: string, type: string) {
