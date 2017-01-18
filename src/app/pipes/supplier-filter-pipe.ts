@@ -8,6 +8,15 @@ import {Category} from "../models/category";
 })
 export class SupplierFilterPipe implements PipeTransform {
   transform(values: any, suppliers: Supplier[]): any[] {
+    let nothingChecked = true
+    suppliers.forEach(supplier => {
+      if (supplier.state)
+        nothingChecked = false
+    });
+
+    if (nothingChecked)
+      return values;
+
     return values.filter((item) => {
 
       let isValidForSupplier = false;

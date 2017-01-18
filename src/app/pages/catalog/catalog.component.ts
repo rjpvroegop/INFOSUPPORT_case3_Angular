@@ -20,11 +20,13 @@ export class CatalogComponent {
   sort_options: string[] = ['name', 'price'];
   sort_rule: string = '';
   search_term: string = '';
+  param:string;
 
   constructor(private route: ActivatedRoute, private productService: ProductService, private supplierService: SupplierService, private categoryService: CategoryService) {
 
     this.route.params.subscribe(params => {
-      if (params['category'] != undefined) {
+      this.param = params['category']
+      if (this.param != undefined) {
         this.categoryService.getCategoriesForCategory(params['category'])
           .then(categories => {
             this.categories = <Category[]> categories;
@@ -34,10 +36,7 @@ export class CatalogComponent {
       }else{
         this.getCategories();
       }
-
-
     });
-
 
     this.productService.getActiveProducts()
       .then(products => {

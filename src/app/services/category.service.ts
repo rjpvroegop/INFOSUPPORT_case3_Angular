@@ -32,7 +32,7 @@ export class CategoryService {
 
     let categories = body.map(category => {
       category = <Category> category;
-      category.state = true;
+      category.state = false;
       return category;
     });
 

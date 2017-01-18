@@ -1,5 +1,4 @@
 import {Pipe, PipeTransform} from "@angular/core";
-import {Supplier} from "../models/supplier";
 import {Category} from "../models/category";
 
 @Pipe({
@@ -8,19 +7,42 @@ import {Category} from "../models/category";
 })
 export class CategoryFilterPipe implements PipeTransform {
   transform(values: any, categories: Category[]): any[] {
-    return values.filter((product) => {
+    let nothingChecked = true
+    categories.forEach(category => {
+      //category.productCount = 0;
+      if (category.state)
+        nothingChecked = false
+    });
 
-      let isValidForCategory = true;
+    if (nothingChecked)
+      return values;
+
+    let products = values.filter((product) => {
+
+      let isValidForCategory = false;
 
       product.categoryList.forEach(productcategory => {
         categories.forEach(category => {
-          if ((productcategory.id == category.id) && !category.state){
-            isValidForCategory = category.state
+          if ((productcategory.id == category.id)) {
+            if (category.state)
+              isValidForCategory = category.state
           }
         });
       });
 
       return isValidForCategory;
     });
+    //
+    // products.forEach((product)=> {
+    //   product.categoryList.forEach(productcategory => {
+    //     categories.forEach(category => {
+    //       if ((productcategory.id == category.id)){
+    //         category.productCount ++;
+    //       }
+    //     });
+    //   });
+    // });
+
+    return products
   }
 }

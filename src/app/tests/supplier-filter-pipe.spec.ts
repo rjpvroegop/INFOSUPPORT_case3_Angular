@@ -1,45 +1,37 @@
-import {CategoryFilterPipe} from "../pipes/category-filter-pipe";
 import {Supplier} from "../models/supplier";
+import {SupplierFilterPipe} from "../pipes/supplier-filter-pipe";
 
 
 describe('Filter Pipe Tests', () => {
-  let pipe:CategoryFilterPipe;
+  let pipe:SupplierFilterPipe;
   let products = [];
-  let suppliers: Supplier[] = [];
+  let supplier1 = {id: 1, name: "ABC", state: true};
+  let supplier2 = {id: 2, name: "DEF", state: false};
+
+  let suppliers: Supplier[] = [supplier1, supplier2];
 
   beforeEach(() => {
-    pipe = new CategoryFilterPipe();
+    pipe = new SupplierFilterPipe();
 
     products = [{
       name : 'Car',
       price : 12.50,
-      categoryList : [{id : 1, name : 'Misc'}, {id : 5, name : 'Misc'}],
-      supplier : {
-        id : 1,
-        name : 'GHI'
-      }
+      supplier : supplier2
   },{
     name : 'Boat',
     price : 17.50,
-    categoryList : [{id : 2, name : 'Misc'}, {id : 5, name : 'Misc'}],
-      supplier : {
-        id : 1,
-        name : 'GHI'
-      }
+      supplier : supplier1
   },{
     name :  'Plane',
     price : 35.00,
-    categoryList : [{id : 3, name : 'Misc'}, {id : 5, name : 'Misc'}],
-      supplier : {
-        id : 1,
-        name : 'GHI'
-      }
+      supplier : supplier1
   }]
   });
 
-  it('Should sort filter products and show only car', () => {
-    var sorted = pipe.transform(products,true,false,false,false, suppliers);
+  it('Should sort filter products and show only Boad and Plane', () => {
+    var sorted = pipe.transform(products,suppliers);
     console.log(JSON.stringify(sorted));
-    expect(sorted[0].name).toEqual('Car');
+    expect(sorted[0].name).toEqual('Boat');
+    expect(sorted[1].name).toEqual('Plane');
   });
 });
