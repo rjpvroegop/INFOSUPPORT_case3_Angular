@@ -1,14 +1,14 @@
-import {FilterPipe} from "../pipes/filter-pipe";
+import {CategoryFilterPipe} from "../pipes/category-filter-pipe";
 import {Supplier} from "../models/supplier";
 
 
 describe('Filter Pipe Tests', () => {
-  let pipe:FilterPipe;
+  let pipe:CategoryFilterPipe;
   let products = [];
   let suppliers: Supplier[] = [];
 
   beforeEach(() => {
-    pipe = new FilterPipe();
+    pipe = new CategoryFilterPipe();
 
     products = [{
       name : 'Car',
@@ -37,9 +37,9 @@ describe('Filter Pipe Tests', () => {
   }]
   });
 
-  /*it('Should sort filter products and show only car', () => {
+  it('Should sort filter products and show only car', () => {
     var sorted = pipe.transform(products,true,false,false,false, suppliers);
     console.log(JSON.stringify(sorted));
     expect(sorted[0].name).toEqual('Car');
-  });*/
+  });
 });

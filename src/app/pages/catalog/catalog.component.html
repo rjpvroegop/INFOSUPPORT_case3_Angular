@@ -11,25 +11,10 @@
         </p>
       </li>
       <li>
-          <strong>Show:</strong>
-        <div class="checkbox">
+        <strong>Categories:</strong>
+        <div class="checkbox" *ngFor="let category of categories">
           <label>
-            <input type="checkbox" [(ngModel)]="show_bikes"> Bikes
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" [(ngModel)]="show_clothes"> Clothing
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" [(ngModel)]="show_parts"> Bicycle parts
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" [(ngModel)]="show_misc"> Accessory
+            <input type="checkbox" [(ngModel)]="category.state"> {{category.name}}
           </label>
         </div>
       </li>
@@ -60,7 +45,7 @@
       </div>
       <hr>
       <div class="col-sm-6 col-md-3"
-        *ngFor="let product of products | search : search_term | category : show_bikes : show_parts : show_clothes : show_misc : suppliers | sort : sort_rule">
+        *ngFor="let product of products | search : search_term | categoryfilter : categories | supplierfilter : suppliers  | sort : sort_rule">
         <product-thumbnail [product]="product"></product-thumbnail>
       </div>
     </div>
