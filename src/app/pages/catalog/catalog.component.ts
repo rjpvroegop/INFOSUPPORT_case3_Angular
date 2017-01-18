@@ -1,10 +1,9 @@
-import {Component, ChangeDetectionStrategy} from '@angular/core';
+import {Component} from '@angular/core';
 import {Product} from "../../models/product";
 import {ProductService} from "../../services/product.service";
 import {SupplierService} from "../../services/supplier.service";
 import {Supplier} from "../../models/supplier";
 import {StockService} from "../../services/stock.service";
-import {Stockitem} from "../../models/stockitem";
 
 @Component({
   moduleId: module.id,
@@ -33,14 +32,5 @@ export class CatalogComponent{
       .then(suppliers => {
         this.suppliers = <Supplier[]> suppliers;
     });
-
-    // this.stockService.getAllStock()
-    //   .then(stocks => {
-    //     this.products.map(product => {
-    //       stocks.forEach(stock => {
-    //         if(product.id == stock.productId)
-    //       })
-    //     })
-    //   })
   }
 }

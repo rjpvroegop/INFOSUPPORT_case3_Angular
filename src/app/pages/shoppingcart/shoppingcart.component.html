@@ -17,34 +17,31 @@
         <th>amount</th>
         <th></th>
       </tr>
+
+
       </thead>
       <tbody>
       <tr *ngFor="let oi of shoppingcartService.getOrder().orderitems">
-        <td><img [src]="oi.product.image" style="max-height:40px;max-width:40px;"></td>
-        <td>{{oi.product.name}}</td>
+        <td><a href="/product/{{oi.product.id}}"><img [src]="oi.product.image" style="max-height:40px;max-width:40px;"></a></td>
+        <td><a href="/product/{{oi.product.id}}">{{oi.product.name}}</a></td>
         <td>${{oi.product.price}}</td>
-        <th scope="row">{{oi.amount}}</th>
+        <td  scope="row">{{oi.amount}}</td>
         <td>
           <div class="row">
-            <div class="col-sm-3">
-              <button class="btn btn-sm btn-success" (click)="addProduct(oi.product)">
+            <div class="col-sm-4">
+              <button class="btn btn-xs btn-success" (click)="addProduct(oi.product)">
                 <span class="glyphicon glyphicon-plus"></span>
               </button>
             </div>
-            <div class="col-sm-3">
-              <button class="btn btn-sm btn-warning" (click)="removeProduct(oi.product)">
+            <div class="col-sm-4">
+              <button class="btn btn-xs btn-warning" (click)="removeProduct(oi.product)">
                 <span class="glyphicon glyphicon-minus"></span>
               </button>
             </div>
-            <div class="col-sm-3">
-              <button class="btn btn-sm btn-danger" (click)="clearProduct(oi.product)">
+            <div class="col-sm-4">
+              <button class="btn btn-xs btn-danger" (click)="clearProduct(oi.product)">
                 <span class="glyphicon glyphicon-remove"></span>
               </button>
-            </div>
-            <div class="col-sm-3">
-              <a href="/product/{{oi.product.id}}" class="btn btn-sm btn-primary">
-                Details
-              </a>
             </div>
           </div>
         </td>

@@ -37,7 +37,7 @@ export class ShoppingcartService {
       if (orderItem.product.id == product.id) {
         if (orderItem.amount == 1) {
           let i = this.order.orderitems.indexOf(orderItem);
-          this.order.orderitems.slice(i, 1)
+          this.order.orderitems.splice(i, 1)
         } else {
           orderItem.amount--;
         }

@@ -6,8 +6,7 @@ import {environment} from "../../environments/environment";
 export class StockService {
   private suppliersUrl = environment.url + "/bsvoorraadbeheer/stock";
 
-  constructor(private http: Http) {
-  }
+  constructor(private http: Http) {}
 
   getStock(id: number) {
     return new Promise((res, rej) => {
@@ -18,10 +17,8 @@ export class StockService {
     })
   }
 
-
   extractStock(res) {
     let body = res.json();
-
     return body;
   }
 }
