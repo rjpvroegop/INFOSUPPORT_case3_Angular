@@ -1,9 +1,8 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-
-import { AppComponent } from './app.component';
+import {BrowserModule} from "@angular/platform-browser";
+import {NgModule} from "@angular/core";
+import {FormsModule} from "@angular/forms";
+import {HttpModule} from "@angular/http";
+import {AppComponent} from "./app.component";
 import {Routes, RouterModule} from "@angular/router";
 import {HomeComponent} from "./pages/home/home.component";
 import {ProductComponent} from "./pages/product/product.component";
@@ -21,9 +20,10 @@ import {SearchPipe} from "./pipes/search-pipe";
 import {ShoppingcartComponent} from "./pages/shoppingcart/shoppingcart.component";
 import {ShoppingcartService} from "./services/shoppingcart.service";
 import {OrderpricePipe} from "./pipes/orderprice-pipe";
-import {MyDatePickerModule } from 'mydatepicker';
+import {MyDatePickerModule} from "mydatepicker";
 import {StockService} from "./services/stock.service";
 import {CategoryService} from "./services/category.service";
+import {LoginComponent} from "./pages/login/login.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -32,7 +32,8 @@ const appRoutes: Routes = [
   {path: 'product/:id', component: ProductComponent},
   {path: 'customer', component: CustomerComponent},
   {path: 'customer/:id', component: CustomerComponent},
-  {path: 'shoppingcart', component: ShoppingcartComponent}
+  {path: 'shoppingcart', component: ShoppingcartComponent},
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({
@@ -57,6 +58,7 @@ const appRoutes: Routes = [
     SupplierFilterPipe,
     SearchPipe,
     OrderpricePipe,
+    LoginComponent,
 
   ],
   imports: [
