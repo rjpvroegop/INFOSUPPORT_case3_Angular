@@ -49,7 +49,7 @@
     <label>Birth Date</label>
     <p>
       <my-date-picker [options]="myDatePickerOptions"
-                      (dateChanged)="onDateChanged($event)"></my-date-picker>
+                      (dateChanged)="onDateChanged($event)" [selDate]="account.customer.birthDate"></my-date-picker>
     </p>
   </div>
   <div class="row">
