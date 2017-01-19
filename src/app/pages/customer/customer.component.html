@@ -52,7 +52,19 @@
                       (dateChanged)="onDateChanged($event)"></my-date-picker>
     </p>
   </div>
-  <h3>Addresses</h3>
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Addresses</h3>
+    </div>
+    <div class="col-md-6">
+      <a class="btn btn-primary pull-right" (click)="addAddress()">
+        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+      </a>
+    </div>
+
+
+  </div>
+
   <hr/>
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
       <div class="panel panel-default" *ngFor="let address of account.customer.addresses; let i = index">
@@ -90,12 +102,10 @@
         </div>
       </div>
     </div>
-    <a class="btn btn-primary pull-right" (click)="addAddress()">Add Address</a>
-  <a href="#" class="btn btn-primary">Save Account</a>
-  <button *ngIf="newCustomer" type="submit" class="btn btn-primary pull-right" (click)="registerAccount(account)">
-    Register
+  <button *ngIf="newCustomer" type="submit" class="btn btn-primary" (click)="registerAccount(account)">
+    Register Account
   </button>
   <button *ngIf="!newCustomer" type="submit" class="btn btn-primary" (click)="saveAccountInfo(account)">
-    Save info
+    Update info
   </button>
 </form>

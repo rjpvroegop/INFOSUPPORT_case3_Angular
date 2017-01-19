@@ -1,14 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Order} from "../../models/order";
 
 @Component({
-    moduleId: module.id,
-    selector: 'order-overview',
-    templateUrl: 'order.component.html',
-    styleUrls: ['order.component.css']
+  moduleId: module.id,
+  selector: 'order-overview',
+  templateUrl: 'order.component.html',
+  styleUrls: ['order.component.css']
 })
 export class OrderComponent implements OnInit {
-    constructor() { }
+  order: Order = new Order();
 
-    ngOnInit() { }
+  constructor() {
+    this.createDummyOrder();
+  }
 
+  ngOnInit() {
+  }
+
+  createDummyOrder() {
+  }
 }
