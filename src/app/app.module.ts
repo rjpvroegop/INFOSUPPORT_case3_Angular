@@ -23,6 +23,7 @@ import {OrderpricePipe} from "./pipes/orderprice-pipe";
 import {MyDatePickerModule} from "mydatepicker";
 import {StockService} from "./services/stock.service";
 import {CategoryService} from "./services/category.service";
+import {OrderComponent} from "./pages/order/order.component";
 import {LoginComponent} from "./pages/login/login.component";
 
 const appRoutes: Routes = [
@@ -32,6 +33,8 @@ const appRoutes: Routes = [
   {path: 'product/:id', component: ProductComponent},
   {path: 'customer', component: CustomerComponent},
   {path: 'customer/:id', component: CustomerComponent},
+  {path: 'order/:id', component: OrderComponent},
+  {path: 'order', component: OrderComponent},
   {path: 'shoppingcart', component: ShoppingcartComponent},
   {path: 'login', component: LoginComponent}
 ];
@@ -47,6 +50,7 @@ const appRoutes: Routes = [
     ProductComponent,
     CustomerComponent,
     ShoppingcartComponent,
+    OrderComponent,
 
     // directives
     HeaderComponent,
