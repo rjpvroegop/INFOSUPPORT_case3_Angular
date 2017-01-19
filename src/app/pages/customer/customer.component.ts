@@ -25,9 +25,12 @@ export class CustomerComponent {
 
       console.log(params['id'])
       if (params['id'] != undefined) {
-        this.newCustomer = false;
 
         this.getAccount(params['id']);
+
+        if (this.account.userName)
+          this.newCustomer = false;
+
       }
     });
   }
@@ -63,13 +66,13 @@ export class CustomerComponent {
     sunHighlight: true,
     height: '34px',
     width: '260px',
-    editableDateField : false,
-    disableSince : {year: 2017, month: 1, day: 17},
+    editableDateField: false,
+    disableSince: {year: 2017, month: 1, day: 17},
     inline: false,
     selectionTxtFontSize: '16px'
   };
 
-  onDateChanged(event:any) {
+  onDateChanged(event: any) {
     this.account.customer.birthDate = event.formatted;
     console.log(this.account.customer)
   }
