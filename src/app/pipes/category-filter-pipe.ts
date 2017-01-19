@@ -24,25 +24,41 @@ export class CategoryFilterPipe implements PipeTransform {
       });
     });
 
-    if (nothingChecked)
-      return values;
+    let products;
+    if (nothingChecked){
+      products = values.filter((product) => {
 
-    let products = values.filter((product) => {
+        let isValidForCategory = false;
 
-      let isValidForCategory = false;
-
-      product.categoryList.forEach(productcategory => {
-        categories.forEach(category => {
-          if ((productcategory.id == category.id)) {
-            if (category.state)
-              isValidForCategory = category.state
-
-          }
+        product.categoryList.forEach(productcategory => {
+          categories.forEach(category => {
+            if ((productcategory.id == category.id)) {
+                isValidForCategory = true
+            }
+          });
         });
-      });
 
-      return isValidForCategory;
-    });
+        return isValidForCategory;
+      });
+    }else {
+
+      products = values.filter((product) => {
+
+        let isValidForCategory = false;
+
+        product.categoryList.forEach(productcategory => {
+          categories.forEach(category => {
+            if ((productcategory.id == category.id)) {
+              if (category.state)
+                isValidForCategory = category.state
+
+            }
+          });
+        });
+
+        return isValidForCategory;
+      });
+    }
     return products
   }
 }
