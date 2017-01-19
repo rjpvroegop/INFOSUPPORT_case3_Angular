@@ -28,10 +28,6 @@ export class CustomerComponent {
       if (params['id'] != undefined) {
 
         this.getAccount(params['id']);
-
-        if (this.account.userName)
-          this.newCustomer = false;
-
       }
     });
   }
@@ -41,6 +37,7 @@ export class CustomerComponent {
       .then(account => {
         this.account = <Account> account;
         console.log(this.account);
+        this.newCustomer = false;
       });
   }
 
@@ -53,10 +50,10 @@ export class CustomerComponent {
   }
 
   private registerAccount(account: Account, event) {
-    let id : number;
+    let id: number;
     event.stopPropagation();
     event.preventDefault();
-    this.accountService.newAccount(account).then(function (data :Account) {
+    this.accountService.newAccount(account).then(function (data: Account) {
       id = data.id;
       console.log('ID ' + id)
       new popupMessage('Account Created', 'Welcome ' + account.userName, 'success');
@@ -67,7 +64,7 @@ export class CustomerComponent {
   private saveAccountInfo(account: Account) {
     event.stopPropagation();
     event.preventDefault();
-    this.accountService.updateCustomer(account.customer).then(function (data:Account) {
+    this.accountService.updateCustomer(account.customer).then(function (data: Account) {
       new popupMessage('Account Updated', 'Changed Customer Info', 'success');
     });
   }
@@ -79,8 +76,9 @@ export class CustomerComponent {
     sunHighlight: true,
     height: '34px',
     width: '260px',
-    editableDateField : false,
-    disableSince : {year: 2017, month: 1, day: 17},
+    selDate: '2017-01-01',
+    editableDateField: false,
+    disableSince: {year: 2017, month: 1, day: 17},
     inline: false,
     selectionTxtFontSize: '16px'
   };
