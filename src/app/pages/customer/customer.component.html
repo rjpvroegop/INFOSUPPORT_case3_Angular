@@ -102,10 +102,10 @@
         </div>
       </div>
     </div>
-  <button *ngIf="newCustomer" type="submit" class="btn btn-primary" (click)="registerAccount(account)">
+  <button *ngIf="newCustomer" type="submit" class="btn btn-primary" (click)="registerAccount(account, $event)" >
     Register Account
   </button>
-  <button *ngIf="!newCustomer" type="submit" class="btn btn-primary" (click)="saveAccountInfo(account)">
+  <button *ngIf="!newCustomer" type="submit" class="btn btn-primary" (click)="saveAccountInfo(account, $event)">
     Update info
   </button>
 </form>
