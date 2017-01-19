@@ -25,6 +25,10 @@ export class ShoppingcartComponent implements OnInit {
   }
 
   clearProduct(product: Product){
-    this.shoppingcartService.clearProduct(product);
+    confirm("Are you sure?") ? this.shoppingcartService.clearProduct(product) : '';
+  }
+
+  emptyCart(){
+    confirm("Are you sure?") ? this.shoppingcartService.emptyCart() : '';
   }
 }

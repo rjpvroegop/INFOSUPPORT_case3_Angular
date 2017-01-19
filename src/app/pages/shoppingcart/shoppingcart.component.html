@@ -50,7 +50,7 @@
     </table>
 
     <h3>Total: ${{(shoppingcartService.getOrder() | orderprice).toFixed(2)}}</h3>
-    <button class="btn btn-sm btn-danger" (click)="shoppingcartService.emptyCart()">
+    <button class="btn btn-sm btn-danger" (click)="emptyCart()">
       <span class="glyphicon glyphicon-remove"></span>
     </button>
   </div>
