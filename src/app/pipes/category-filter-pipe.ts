@@ -9,9 +9,19 @@ export class CategoryFilterPipe implements PipeTransform {
   transform(values: any, categories: Category[]): any[] {
     let nothingChecked = true
     categories.forEach(category => {
-      //category.productCount = 0;
+      category.productCount = 0;
       if (category.state)
         nothingChecked = false
+    });
+
+    values.forEach((product)=> {
+      product.categoryList.forEach(productcategory => {
+        categories.forEach(category => {
+          if ((productcategory.id == category.id)){
+            category.productCount ++;
+          }
+        });
+      });
     });
 
     if (nothingChecked)
@@ -26,23 +36,13 @@ export class CategoryFilterPipe implements PipeTransform {
           if ((productcategory.id == category.id)) {
             if (category.state)
               isValidForCategory = category.state
+
           }
         });
       });
 
       return isValidForCategory;
     });
-    //
-    // products.forEach((product)=> {
-    //   product.categoryList.forEach(productcategory => {
-    //     categories.forEach(category => {
-    //       if ((productcategory.id == category.id)){
-    //         category.productCount ++;
-    //       }
-    //     });
-    //   });
-    // });
-
     return products
   }
 }

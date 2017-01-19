@@ -12,16 +12,16 @@
       </li>
       <li>
         <strong>Categories:</strong>
-        <div class="checkbox" *ngFor="let category of (categories ? categories.slice(0,4):[])">
-          <label>
-            <input type="checkbox" [(ngModel)]="category.state"> {{category.name}}
+        <div class="checkbox" *ngFor="let category of (categories ? categories.slice(0,8):[])">
+          <label class="{{!category.state || 'boldClass'}}">
+           {{category.name}} ({{category.productCount}})  <input type="checkbox" style="display: none;" [(ngModel)]="category.state" (click)="setCategoryOn(category)">
           </label>
         </div>
-        <div *ngIf="categories.length > 4">
+        <div *ngIf="categories.length > 8">
           <div class="collapse" id="moreCategories">
-            <div class="checkbox" *ngFor="let category of categories | slice:4">
-              <label>
-                <input type="checkbox" [(ngModel)]="category.state"> {{category.name}}
+            <div class="checkbox" *ngFor="let category of categories | slice:8">
+              <label class="{{!category.state || 'boldClass'}}">
+                {{category.name}} ({{category.productCount}}) <input type="checkbox" style="display: none;"  [(ngModel)]="category.state" (click)="setCategoryOn(category)">
               </label>
             </div>
           </div>

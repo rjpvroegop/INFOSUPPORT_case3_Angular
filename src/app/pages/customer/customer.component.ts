@@ -5,6 +5,8 @@ import {Account} from "../../models/account";
 import {Customer} from "../../models/customer";
 import {Address} from "../../models/address";
 import {popupMessage} from "../../../assets/js/popup";
+import {Category} from "../../models/category";
+import {forEach} from "@angular/router/src/utils/collection";
 
 @Component({
   moduleId: module.id,
@@ -87,4 +89,6 @@ export class CustomerComponent {
     this.account.customer.birthDate = event.formatted;
     console.log(this.account.customer)
   }
+
+
 }

@@ -1,7 +1,8 @@
-import {Injectable} from '@angular/core';
+import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 import {Account} from "../models/account";
 import {environment} from "../../environments/environment";
+import {popupMessage} from "../../assets/js/popup";
 
 @Injectable()
 export class AccountService {
@@ -14,13 +15,18 @@ export class AccountService {
 
   updateCustomer(customer) {
     return new Promise((res, rej) => {
-      this.http.put(this.saveCustomerUrl, customer).subscribe(data => res(data.json()));
+      this.http.put(this.saveCustomerUrl, customer).subscribe(
+        data => res(data.json()),
+        err => new popupMessage('Customer update failed', 'Customer update failed', 'danger'));
     });
   }
 
   newAccount(account) {
     return new Promise((res, rej) => {
-      this.http.post(this.newAccountUrl, account).subscribe(data => res(data.json()));
+      this.http.post(this.newAccountUrl, account).subscribe(
+        data => res(data.json()),
+        err => new popupMessage('Account registration failed', 'Account registration failed', 'danger')
+      );
     });
   }
 
