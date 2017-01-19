@@ -75,7 +75,6 @@ export class CustomerComponent {
     sunHighlight: true,
     height: '34px',
     width: '260px',
-    selDate :  '2017-01-01',
     editableDateField : false,
     disableSince : {year: 2017, month: 1, day: 17},
     inline: false,
