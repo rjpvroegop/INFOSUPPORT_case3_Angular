@@ -1,23 +1,26 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Home</a>
-    </div>
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">Home</a>
+  </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="catalog">Catalog</a></li>
-        <li><a href="customer">Customer</a></li>
+        <li><a href="catalog">All products</a></li>
+        <li><a href="catalog/bikes">Bikes</a></li>
+        <li><a href="catalog/components">Components</a></li>
+        <li><a href="catalog/clothing">Clothing</a></li>
+        <li><a href="catalog/accessories">Accessories</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
-        <li class="login"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Log in</a><app-login style="position:absolute;top:100%;right:0;width:50vw;"></app-login></li>
+        <li><a href="/customer"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
+        <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Log in</a></li>
         <li><a href="shoppingcart"><span class="glyphicon glyphicon-shopping-cart"></span> <small>{{shoppingcartService.getOrder().orderitems.length}}</small></a></li>
       </ul>
     </div>

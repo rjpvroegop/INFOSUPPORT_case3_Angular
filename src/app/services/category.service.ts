@@ -18,6 +18,7 @@ export class CategoryService {
         );
     })
   }
+
   getCategoriesForCategory(category) {
     return new Promise((res, rej) => {
       this.http.get(this.categoriesUrl + "/" + category)

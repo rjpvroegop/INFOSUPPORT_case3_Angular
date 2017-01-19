@@ -56,4 +56,12 @@ export class CatalogComponent {
         this.categories = <Category[]> categories;
       });
   }
+
+  public setCategoryOn(category : Category){
+    console.log(category.name)
+    this.categories.forEach(categoryitem => {
+      categoryitem.state = false
+    });
+    category.state=true;
+  }
 }
