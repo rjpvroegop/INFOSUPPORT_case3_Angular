@@ -4,6 +4,7 @@ import {ActivatedRoute} from "@angular/router";
 import {Account} from "../../models/account";
 import {Customer} from "../../models/customer";
 import {Address} from "../../models/address";
+import {popupMessage} from "../../../assets/js/popup";
 
 @Component({
   moduleId: module.id,
@@ -51,12 +52,24 @@ export class CustomerComponent {
     this.account.customer.addresses.push(address)
   }
 
-  private registerAccount(account: Account) {
-    this.accountService.newAccount(account).then(console.log);
+  private registerAccount(account: Account, event) {
+    let id : number;
+    event.stopPropagation();
+    event.preventDefault();
+    this.accountService.newAccount(account).then(function (data :Account) {
+      id = data.id;
+      console.log('ID ' + id)
+      new popupMessage('Account Created', 'Welcome ' + account.userName, 'success');
+      window.location.replace('/customer/' + id);
+    });
   }
 
   private saveAccountInfo(account: Account) {
-    this.accountService.updateCustomer(account.customer).then(console.log);
+    event.stopPropagation();
+    event.preventDefault();
+    this.accountService.updateCustomer(account.customer).then(function (data:Account) {
+      new popupMessage('Account Updated', 'Changed Customer Info', 'success');
+    });
   }
 
   myDatePickerOptions = {
@@ -66,8 +79,9 @@ export class CustomerComponent {
     sunHighlight: true,
     height: '34px',
     width: '260px',
-    editableDateField: false,
-    disableSince: {year: 2017, month: 1, day: 17},
+    selDate :  '2017-01-01',
+    editableDateField : false,
+    disableSince : {year: 2017, month: 1, day: 17},
     inline: false,
     selectionTxtFontSize: '16px'
   };
