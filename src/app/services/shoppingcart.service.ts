@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Order} from "../models/order";
 import {Product} from "../models/product";
-import {Orderitem} from "../models/orderitem";
+import {OrderItem} from "../models/orderitem";
 import {popupMessage} from "../../assets/js/popup";
 
 @Injectable()
@@ -22,7 +22,7 @@ export class ShoppingcartService {
       }
     }
     if (!found) {
-      let orderitem = new Orderitem;
+      let orderitem = new OrderItem();
       orderitem.product = product;
       orderitem.amount = 1;
       this.order.orderitems.push(orderitem)
