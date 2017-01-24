@@ -5,7 +5,12 @@
   <p><strong>${{product.price}}</strong></p>
   <div class="row">
     <div class="col-md-12">
-      <a class="btn btn-primary" (click)="addProductToCart(product)"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
+      <a class="btn btn-primary addtocart" (click)="addProductToCart(product)">
+        <span class="glyphicon glyphicon-shopping-cart"></span>
+        Add to cart
+
+        <p [ngClass]="{hidden: hidepopup, orange: stock == 0}" class="triangle-border left" [innerHTML]="stock == 0 ? popupMessageNo : popupMessageOk"></p>
+      </a>
     </div>
   </div>
 </div>
