@@ -28,6 +28,9 @@ import {OrderComponent} from "./pages/order/order.component";
 import {LoginComponent} from "./pages/login/login.component";
 import {LogoutComponent} from "./pages/logout/logout.component";
 import {LoginService} from "./services/login.service";
+import {OrderService} from "./services/order.service";
+import {InvoiceComponent} from "./directives/invoice/invoice.component";
+import {PostOrderComponent} from "./pages/post-order/post-order.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -41,7 +44,8 @@ const appRoutes: Routes = [
   {path: 'shoppingcart', component: ShoppingcartComponent},
   {path: 'login', component: LoginComponent},
   {path: 'logout', component: LogoutComponent},
-  {path: 'login/error', component: LoginComponent}
+  {path: 'login/error', component: LoginComponent},
+  {path: 'postorder', component: PostOrderComponent}
 ];
 
 @NgModule({
@@ -58,11 +62,13 @@ const appRoutes: Routes = [
     OrderComponent,
     LoginComponent,
     LogoutComponent,
+    PostOrderComponent,
 
     // directives
     HeaderComponent,
     FooterComponent,
     ProductThumbnailComponent,
+    InvoiceComponent,
 
     // pipes
     SortPipe,
@@ -88,7 +94,8 @@ const appRoutes: Routes = [
     ShoppingcartService,
     StockService,
     CategoryService,
-    LoginService
+    LoginService,
+    OrderService,
   ],
   bootstrap: [AppComponent]
 })
