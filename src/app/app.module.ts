@@ -33,6 +33,7 @@ import {LoginService} from "./services/login.service";
 import {OrderService} from "./services/order.service";
 import {InvoiceComponent} from "./directives/invoice/invoice.component";
 import {PostOrderComponent} from "./pages/post-order/post-order.component";
+import {TaxPipe} from "./pipes/price-tax-pipe";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -84,6 +85,7 @@ const appRoutes: Routes = [
     LoginComponent,
     ContactComponent,
     ThanksOrderComponent,
+    TaxPipe,
 
   ],
   imports: [
