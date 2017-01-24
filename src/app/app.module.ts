@@ -40,7 +40,7 @@ const appRoutes: Routes = [
   {path: 'catalog/:category', component: CatalogComponent},
   {path: 'product/:id', component: ProductComponent},
   {path: 'customer', component: CustomerComponent},
-  {path: 'customer/:id', component: CustomerComponent},
+  {path: 'customer/:customerid', component: CustomerComponent},
   {path: 'order/:id', component: OrderComponent},
   {path: 'order', component: OrderComponent},
   {path: 'shoppingcart', component: ShoppingcartComponent},
