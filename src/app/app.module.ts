@@ -9,6 +9,7 @@ import {ProductComponent} from "./pages/product/product.component";
 import {CatalogComponent} from "./pages/catalog/catalog.component";
 import {CustomerComponent} from "./pages/customer/customer.component";
 import {HeaderComponent} from "./directives/header/header.component";
+import {FooterComponent} from "./directives/footer/footer.component";
 import {ProductThumbnailComponent} from "./directives/product-thumbnail/product-thumbnail.component";
 import {ProductService} from "./services/product.service";
 import {AccountService} from "./services/account.service";
@@ -25,6 +26,8 @@ import {StockService} from "./services/stock.service";
 import {CategoryService} from "./services/category.service";
 import {OrderComponent} from "./pages/order/order.component";
 import {LoginComponent} from "./pages/login/login.component";
+import {LogoutComponent} from "./pages/logout/logout.component";
+import {LoginService} from "./services/login.service";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -36,7 +39,9 @@ const appRoutes: Routes = [
   {path: 'order/:id', component: OrderComponent},
   {path: 'order', component: OrderComponent},
   {path: 'shoppingcart', component: ShoppingcartComponent},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'logout', component: LogoutComponent},
+  {path: 'login/error', component: LoginComponent}
 ];
 
 @NgModule({
@@ -51,9 +56,12 @@ const appRoutes: Routes = [
     CustomerComponent,
     ShoppingcartComponent,
     OrderComponent,
+    LoginComponent,
+    LogoutComponent,
 
     // directives
     HeaderComponent,
+    FooterComponent,
     ProductThumbnailComponent,
 
     // pipes
@@ -62,7 +70,6 @@ const appRoutes: Routes = [
     SupplierFilterPipe,
     SearchPipe,
     OrderpricePipe,
-    LoginComponent,
 
   ],
   imports: [
@@ -81,6 +88,7 @@ const appRoutes: Routes = [
     ShoppingcartService,
     StockService,
     CategoryService,
+    LoginService
   ],
   bootstrap: [AppComponent]
 })
