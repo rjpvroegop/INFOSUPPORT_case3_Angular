@@ -6,7 +6,7 @@
 
   <div class="col-sm-12" *ngIf="shoppingcartService.getOrder().orderitems.length > 0">
     <table class="table">
-      <caption><span class="glyphicon glyphicon-shopping-cart"></span> contents:
+      <caption *ngIf="shoppingcartview"><span class="glyphicon glyphicon-shopping-cart"></span> contents:
         <hr>
       </caption>
       <thead>
@@ -22,11 +22,12 @@
       </thead>
       <tbody>
       <tr *ngFor="let oi of shoppingcartService.getOrder().orderitems">
-        <td><a href="/product/{{oi.product.id}}"><img [src]="oi.product.image" style="max-height:40px;max-width:40px;"></a></td>
+        <td><a href="/product/{{oi.product.id}}"><img [src]="oi.product.image" style="max-height:40px;max-width:40px;"></a>
+        </td>
         <td><a href="/product/{{oi.product.id}}">{{oi.product.name}}</a></td>
         <td>${{oi.product.price}}</td>
-        <td  scope="row">{{oi.amount}}</td>
-        <td>
+        <td scope="row">{{oi.amount}}</td>
+        <td *ngIf="shoppingcartview">
           <div class="row">
             <div class="col-sm-4">
               <button class="btn btn-xs btn-success" (click)="addProduct(oi.product)">
@@ -50,13 +51,18 @@
     </table>
 
     <h3>Total: ${{(shoppingcartService.getOrder() | orderprice).toFixed(2)}}</h3>
-    <button class="btn btn-sm btn-danger" (click)="emptyCart()">
-      <span class="glyphicon glyphicon-remove"></span>
-    </button>
+
+    <div *ngIf="shoppingcartview">
+      <a class="shoppingcart-icon-small btn btn-info" style="cursor:pointer;" href="/order">
+        <span class="glyphicon glyphicon-shopping-cart"></span> Place order
+      </a>
+      <a class="shoppingcart-icon-small btn btn-danger" style="cursor:pointer;" (click)="emptyCart()">
+        <span class="glyphicon glyphicon-remove"></span> Empty
+      </a>
+    </div>
   </div>
-  <div class="col-sm-12">
+  <div *ngIf="shoppingcartview" class="col-sm-12">
     <hr>
     <h1 class="shoppingcart-icon-large"><span class="glyphicon glyphicon-shopping-cart"></span></h1>
-    <h1 class="shoppingcart-icon-small"><span class="glyphicon glyphicon-shopping-cart"></span></h1>
   </div>
 </div>
