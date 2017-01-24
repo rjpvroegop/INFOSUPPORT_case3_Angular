@@ -25,6 +25,8 @@ import {StockService} from "./services/stock.service";
 import {CategoryService} from "./services/category.service";
 import {OrderComponent} from "./pages/order/order.component";
 import {LoginComponent} from "./pages/login/login.component";
+import {ContactComponent} from "./pages/contact/contact.component";
+import {ThanksOrderComponent} from "./pages/thanks-order/thanks-order.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -36,7 +38,9 @@ const appRoutes: Routes = [
   {path: 'order/:id', component: OrderComponent},
   {path: 'order', component: OrderComponent},
   {path: 'shoppingcart', component: ShoppingcartComponent},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'contact', component: ContactComponent},
+  {path: 'thanks', component: ThanksOrderComponent}
 ];
 
 @NgModule({
@@ -63,6 +67,8 @@ const appRoutes: Routes = [
     SearchPipe,
     OrderpricePipe,
     LoginComponent,
+    ContactComponent,
+    ThanksOrderComponent,
 
   ],
   imports: [
