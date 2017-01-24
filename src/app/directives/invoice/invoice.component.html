@@ -24,32 +24,32 @@
 <div class="row">
     <dl class="col-sm-3">
         <dt>Invoice Address</dt>
-        <dd>{{orderTest.name}}</dd>
-        <dd>{{orderTest.street}}</dd>
-        <dd>{{orderTest.zip}} {{orderTest.city}}</dd>
+        <dd>{{order.customer.firstName}} {{order.customer.lastName}}</dd>
+        <dd>{{order.billingAddress.street}}</dd>
+        <dd>{{order.billingAddress.zip}} {{order.billingAddress.city}}</dd>
         <dd>The Netherlands</dd>
-        <dd>{{orderTest.email}}</dd>
+        <dd>{{order.customer.email}}</dd>
     </dl>
     <dl class="col-sm-3">
         <dt>Delivery Address</dt>
-        <dd>{{orderTest.name}}</dd>
-        <dd>{{orderTest.street}}</dd>
-        <dd>{{orderTest.zip}} {{orderTest.city}}</dd>
+        <dd>{{order.customer.firstName}} {{order.customer.lastName}}</dd>
+        <dd>{{order.shippingAddress.street}}</dd>
+        <dd>{{order.shippingAddress.zip}} {{order.shippingAddress.city}}</dd>
         <dd>The Netherlands</dd>
-        <dd>{{orderTest.email}}</dd>
+        <dd>{{order.customer.email}}</dd>
     </dl>
     <dl class="col-sm-5">
         <dt class="col-sm-6">Order date:</dt>
-        <dd class="col-sm-6">{{orderTest.orderdate}}</dd>
+        <dd class="col-sm-6">{{order.orderTime}}</dd>
 
         <dt class="col-sm-6">Order number:</dt>
-        <dd class="col-sm-6">{{orderTest.ordernumber}}</dd>
+        <dd class="col-sm-6">{{order.bsKey}}</dd>
 
         <dt class="col-sm-6">Customer ID:</dt>
-        <dd class="col-sm-6">{{orderTest.custId}}</dd>
+        <dd class="col-sm-6">{{order.customer.bsKey}}</dd>
     </dl>
-
 </div>
+
 <hr/>
 <div class="row">
     <div class="col-sm-12">
@@ -64,19 +64,19 @@
                 <th class="text-right">Tax amount</th>
                 <th class="text-right">Subtotal</th>
             </tr>
-            <tr *ngFor="let product of products">
-                <td>{{product.name}}</td>
-                <td>{{product.prodcode}}</td>
-                <td class="text-right">{{product.amount}}</td>
-                <td class="text-right">€ {{product.price}}</td>
+            <tr *ngFor="let orderitem of order.orderitems">
+                <td>{{orderitem.product.name}}</td>
+                <td>{{orderitem.product.bsKey}}</td>
+                <td class="text-right">{{orderitem.amount}}</td>
+                <td class="text-right">€ {{orderitem.product.price}}</td>
                 <td class="text-right">21%</td>
-                <td class="text-right">€ 3,44</td>
-                <td class="text-right">€ {{product.subtotal}}</td>
+                <td class="text-right">€ {{orderitem.tax}}</td>
+                <td class="text-right">€ {{orderitem.price}}</td>
             </tr>
             <tr>
                 <td colspan="5"> </td>
                 <th style="border-top: solid 1px;">Subtotal</th>
-                <td class="text-right" style="border-top: solid 1px">€ {{orderTest.subtotal}}</td>
+                <td class="text-right" style="border-top: solid 1px">€ {{order | orderprice}}</td>
             </tr>
             <tr>
                 <td colspan="5"> </td>
