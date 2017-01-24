@@ -1,7 +1,7 @@
 <h2>Contact</h2>
 <hr>
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-3">
     <h4>
       Kantilever B.V. <br>
       Kruisboog 42 <br>
@@ -10,7 +10,7 @@
     </h4>
 
   </div>
-  <div class="col-md-6">
+  <div class="col-md-3">
     <h4>
       Email: info@kantilever.nl <br>
       IBAN: NL44 INGB 00058 54051 <br>
@@ -18,4 +18,10 @@
       BTW NL8062.30.277.B01 <br>
     </h4>
   </div>
+  <div class="col-md-6">
+    <sebm-google-map [latitude]="lat" [longitude]="lng">
+      <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
+    </sebm-google-map>
+  </div>
 </div>
+
