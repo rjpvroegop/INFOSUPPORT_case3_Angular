@@ -46,7 +46,7 @@ const appRoutes: Routes = [
   {path: 'shoppingcart', component: ShoppingcartComponent},
   {path: 'login', component: LoginComponent},
   {path: 'contact', component: ContactComponent},
-  {path: 'thanks', component: ThanksOrderComponent}
+  {path: 'thanks', component: ThanksOrderComponent},
   {path: 'login', component: LoginComponent},
   {path: 'logout', component: LogoutComponent},
   {path: 'login/error', component: LoginComponent},
