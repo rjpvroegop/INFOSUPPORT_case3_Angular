@@ -9,6 +9,7 @@ import {ProductComponent} from "./pages/product/product.component";
 import {CatalogComponent} from "./pages/catalog/catalog.component";
 import {CustomerComponent} from "./pages/customer/customer.component";
 import {HeaderComponent} from "./directives/header/header.component";
+import {FooterComponent} from "./directives/footer/footer.component";
 import {ProductThumbnailComponent} from "./directives/product-thumbnail/product-thumbnail.component";
 import {ProductService} from "./services/product.service";
 import {AccountService} from "./services/account.service";
@@ -27,6 +28,11 @@ import {OrderComponent} from "./pages/order/order.component";
 import {LoginComponent} from "./pages/login/login.component";
 import {ContactComponent} from "./pages/contact/contact.component";
 import {ThanksOrderComponent} from "./pages/thanks-order/thanks-order.component";
+import {LogoutComponent} from "./pages/logout/logout.component";
+import {LoginService} from "./services/login.service";
+import {OrderService} from "./services/order.service";
+import {InvoiceComponent} from "./directives/invoice/invoice.component";
+import {PostOrderComponent} from "./pages/post-order/post-order.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -41,6 +47,10 @@ const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'thanks', component: ThanksOrderComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'logout', component: LogoutComponent},
+  {path: 'login/error', component: LoginComponent},
+  {path: 'postorder', component: PostOrderComponent}
 ];
 
 @NgModule({
@@ -55,10 +65,15 @@ const appRoutes: Routes = [
     CustomerComponent,
     ShoppingcartComponent,
     OrderComponent,
+    LoginComponent,
+    LogoutComponent,
+    PostOrderComponent,
 
     // directives
     HeaderComponent,
+    FooterComponent,
     ProductThumbnailComponent,
+    InvoiceComponent,
 
     // pipes
     SortPipe,
@@ -87,6 +102,8 @@ const appRoutes: Routes = [
     ShoppingcartService,
     StockService,
     CategoryService,
+    LoginService,
+    OrderService,
   ],
   bootstrap: [AppComponent]
 })

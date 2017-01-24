@@ -19,7 +19,7 @@ export class ProductComponent {
 
   constructor(private route: ActivatedRoute, private productService: ProductService, private shoppingcartService: ShoppingcartService, private stockService: StockService) {
     this.route.params.subscribe(params => {
-      let id = params['id'];
+        let id = params['id'];
 
       this.productService.getProduct(id)
         .then(product => {
