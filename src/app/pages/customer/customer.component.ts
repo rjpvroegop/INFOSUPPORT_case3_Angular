@@ -1,12 +1,10 @@
-import {Component} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 import {AccountService} from "../../services/account.service";
 import {ActivatedRoute} from "@angular/router";
 import {Account} from "../../models/account";
 import {Customer} from "../../models/customer";
 import {Address} from "../../models/address";
 import {popupMessage} from "../../../assets/js/popup";
-import {Category} from "../../models/category";
-import {forEach} from "@angular/router/src/utils/collection";
 
 @Component({
   moduleId: module.id,
@@ -14,31 +12,31 @@ import {forEach} from "@angular/router/src/utils/collection";
   templateUrl: 'customer.component.html',
   styleUrls: ['customer.component.css']
 })
-export class CustomerComponent {
+export class CustomerComponent implements OnInit{
   newCustomer: boolean = true;
-  account: Account;
+  account: Account = new Account();
+  @Input() customerid : string = "";
 
   constructor(private route: ActivatedRoute, private accountService: AccountService) {
-    this.account = new Account();
     this.account.customer = new Customer();
     this.account.customer.addresses = [];
 
-
     this.route.params.subscribe(params => {
-
-      console.log(params['id'])
-      if (params['id'] != undefined) {
-
-        this.getAccount(params['id']);
+      if (params['customerid'] != undefined) {
+        this.customerid = params['customerid'];
       }
     });
+  }
+
+  ngOnInit(): void {
+    // console.log(this.customerid);
+    this.getAccount(this.customerid);
   }
 
   private getAccount(id: string) {
     this.accountService.getAccount(id)
       .then(account => {
         this.account = <Account> account;
-        console.log(this.account);
         this.newCustomer = false;
       });
   }
@@ -57,7 +55,6 @@ export class CustomerComponent {
     event.preventDefault();
     this.accountService.newAccount(account).then(function (data: Account) {
       id = data.id;
-      console.log('ID ' + id)
       new popupMessage('Account Created', 'Welcome ' + account.userName, 'success');
       window.location.replace('/customer/' + id);
     });
@@ -87,7 +84,6 @@ export class CustomerComponent {
 
   onDateChanged(event: any) {
     this.account.customer.birthDate = event.formatted;
-    console.log(this.account.customer)
   }
 
 

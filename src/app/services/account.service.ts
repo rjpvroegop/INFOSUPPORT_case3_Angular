@@ -9,7 +9,7 @@ export class AccountService {
   accountUrl = environment.url + "/bsklantbeheer/accounts/";
   saveCustomerUrl = environment.url + "/bsklantbeheer/customers/editcustomer";
   newAccountUrl = environment.url + "/bsklantbeheer/accounts/newaccount";
-
+  loginUrl = environment.url + "/login";
   constructor(private http: Http) {
   }
 
@@ -29,6 +29,7 @@ export class AccountService {
       );
     });
   }
+
 
   getAccount(id) {
     return new Promise((res, rej) => {

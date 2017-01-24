@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {ProductService} from "../../services/product.service";
 import {Product} from "../../models/product";
@@ -19,7 +19,7 @@ export class ProductComponent {
 
   constructor(private route: ActivatedRoute, private productService: ProductService, private shoppingcartService: ShoppingcartService, private stockService: StockService) {
     this.route.params.subscribe(params => {
-      let id = params['id'];
+        let id = params['id'];
 
       this.productService.getProduct(id)
         .then(product => {
@@ -39,7 +39,7 @@ export class ProductComponent {
       new popupMessage('Product is added to your shoppingcart.', 'Please note: This product is out of stock. Delivery may take some time.', 'warning')
     }
 
-    this.shoppingcartService.addProduct(product);
+    this.shoppingcartService.addProduct(product,true);
   }
 
 }

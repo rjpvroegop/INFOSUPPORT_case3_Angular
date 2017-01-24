@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {Order} from "../../models/order";
 import {Input} from "@angular/core/src/metadata/directives";
 
