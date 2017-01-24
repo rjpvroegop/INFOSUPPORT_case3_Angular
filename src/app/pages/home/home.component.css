@@ -10,6 +10,6 @@
   display: flex;
   align-items: center;
 }
-.home-button
+.home-button{
   width: 100px;
 }
