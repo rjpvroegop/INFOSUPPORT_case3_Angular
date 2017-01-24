@@ -20,7 +20,7 @@ export class ShoppingcartComponent implements OnInit {
   }
 
   addProduct(product: Product){
-    this.shoppingcartService.addProduct(product);
+    this.shoppingcartService.addProduct(product, true);
   }
 
   removeProduct(product: Product){

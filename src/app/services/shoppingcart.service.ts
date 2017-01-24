@@ -42,7 +42,7 @@ export class ShoppingcartService {
     this.saveOrder();
   }
 
-  addProduct(product: Product) {
+  addProduct(product: Product, hidepopup: boolean) {
     let found: boolean = false;
     for (let orderItem of this.order.orderitems) {
       if (orderItem.product.id == product.id) {
@@ -58,7 +58,11 @@ export class ShoppingcartService {
     }
     this.saveOrder();
 
-    new popupMessage(product.name, 'Added to your shoppingcart', 'success');
+    console.log(hidepopup);
+
+    if(!hidepopup){
+      new popupMessage(product.name, 'Added to your shoppingcart', 'success');
+    }
   }
 
   removeProduct(product: Product) {

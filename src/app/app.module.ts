@@ -33,6 +33,7 @@ import {LoginService} from "./services/login.service";
 import {OrderService} from "./services/order.service";
 import {InvoiceComponent} from "./directives/invoice/invoice.component";
 import {PostOrderComponent} from "./pages/post-order/post-order.component";
+import {AgmCoreModule} from "angular2-google-maps/core";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -93,6 +94,9 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     MyDatePickerModule,
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyCoENbGFFZVGiwoZU0btVyjzgcwjztzoDE"
+    })
   ],
   providers: [
     // services
