@@ -11,5 +11,11 @@
   align-items: center;
 }
 .home-button{
-  width: 100px;
+  width: 150px;
+  font-size: large;
+  height: 40px;
+}
+.home-jumbotron{
+  padding-left: 0;
+  padding-right: 0;
 }
