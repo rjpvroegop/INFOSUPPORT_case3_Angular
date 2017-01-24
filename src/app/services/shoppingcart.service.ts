@@ -3,14 +3,43 @@ import {Order} from "../models/order";
 import {Product} from "../models/product";
 import {OrderItem} from "../models/orderitem";
 import {popupMessage} from "../../assets/js/popup";
+import {Address} from "../models/address";
+import {Customer} from "../models/customer";
+import {Payment} from "../models/payment";
 
 @Injectable()
 export class ShoppingcartService {
-  order: Order = new Order();
+  private order: Order = new Order();
 
   constructor(){
     this.order.orderitems = [];
+    this.order.customer = new Customer();
+    this.order.customer.addresses = [];
+    this.order.payment = new Payment();
+    this.order.billingAddress = new Address();
+    this.order.shippingAddress = new Address();
     this.getOrder();
+  }
+
+  setShippingAddress(address: Address){
+    this.order.shippingAddress = address;
+    this.saveOrder();
+  }
+
+  setBillingAddress(address: Address){
+    this.order.billingAddress = address;
+    this.saveOrder();
+  }
+
+  setOrderPlacementDetails(){
+    this.order.orderTime = new Date().toISOString();
+    this.order.payment.method = "bill";
+    this.saveOrder();
+  }
+
+  setCustomer(customer : Customer){
+    this.order.customer = customer;
+    this.saveOrder();
   }
 
   addProduct(product: Product) {
@@ -74,9 +103,16 @@ export class ShoppingcartService {
     localStorage.setItem('kantilevershoppingcart', JSON.stringify(this.order));
   }
 
-  getOrder() {
+  getOrder(): Order {
     let shoppingcartOrder = localStorage.getItem('kantilevershoppingcart');
-    this.order = shoppingcartOrder ? JSON.parse(shoppingcartOrder) : this.order;
+
+    if(!shoppingcartOrder){
+      this.saveOrder();
+    }
+    else {
+      this.order = JSON.parse(shoppingcartOrder);
+    }
+
     return this.order;
   }
 }

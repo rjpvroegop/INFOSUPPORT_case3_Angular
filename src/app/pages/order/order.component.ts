@@ -14,51 +14,44 @@ import {Address} from "../../models/address";
   styleUrls: ['order.component.css']
 })
 export class OrderComponent implements OnInit {
-  order: Order;
+  order: Order = new Order();
 
   constructor(private orderService: OrderService, private accountService: AccountService, private shoppingcartService: ShoppingcartService) {
-    this.order = shoppingcartService.getOrder();
     this.order.customer = this.order.customer || new Customer();
     this.order.customer.addresses = this.order.customer.addresses || [];
     this.order.orderitems = this.order.orderitems || [];
   }
 
   ngOnInit() {
+    console.log(this.shoppingcartService.getOrder());
     if(!this.order.customer.id) {
-      this.createDummyOrder();
-      // window.location.replace("/login");
+      this.setDummyCustomer();
+    //   // window.location.replace("/login");
     }
   }
 
   setShippingAddress(address: Address){
-    this.order.shippingAddress = address;
+    this.shoppingcartService.setShippingAddress(address);
+    this.order = this.shoppingcartService.getOrder();
   }
 
   setBillingAddress(address: Address){
-    this.order.billingAddress = address;
+    this.shoppingcartService.setBillingAddress(address);
+    this.order = this.shoppingcartService.getOrder();
   }
 
   placeOrder(){
-    this.order.orderState = "Posted";
-    this.order.orderTime = new Date().toISOString();
-    this.order.payment.method = "bill";
-  }
-
-  createDummyOrder() {
-    this.orderService.getOrder("5885df13a24a5b140c6f0e39").then(order => {
-      this.order = <Order> order;
-      this.order.customer = new Customer();
-      this.order.customer.addresses = [];
-      this.setDummyCustomer();
-      this.order.customer.id = 1;
-    })
+    this.shoppingcartService.setOrderPlacementDetails();
+    this.order = this.shoppingcartService.getOrder();
+    this.orderService.saveOrder(this.order).then(response => console.log(response));
   }
 
   setDummyCustomer(){
-    this.accountService.getAccount(1).then(account => {
-      this.order.customer =  (<Account> account).customer;
-      this.order.billingAddress = this.order.customer.addresses[0];
-      this.order.shippingAddress = this.order.customer.addresses[0];
+    this.accountService.getAccount(1).then((account: Account) => {
+      this.shoppingcartService.setCustomer(account.customer);
+      this.shoppingcartService.setBillingAddress(account.customer.addresses[0]);
+      this.shoppingcartService.setShippingAddress(account.customer.addresses[0]);
+      this.order = this.shoppingcartService.getOrder();
     })
   }
 }
