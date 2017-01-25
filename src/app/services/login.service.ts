@@ -18,8 +18,7 @@ export class LoginService {
         .subscribe(
           (data) => {
             this.saveCustomer(this.extractAccount(data).customer);
-            window.location.replace("")
-            console.log(data)
+            window.history.back();
           },
           err => new popupMessage('Login failed', 'Username and password not correct', 'danger')
         )
