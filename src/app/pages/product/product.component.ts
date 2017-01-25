@@ -39,7 +39,7 @@ export class ProductComponent {
       new popupMessage('Product is added to your shoppingcart.', 'Please note: This product is out of stock. Delivery may take some time.', 'warning')
     }
 
-    this.shoppingcartService.addProduct(product,true);
+    this.shoppingcartService.addProduct(product, true);
   }
 
 }

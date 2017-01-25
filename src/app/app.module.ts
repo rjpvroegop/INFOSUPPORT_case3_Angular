@@ -21,7 +21,7 @@ import {SearchPipe} from "./pipes/search-pipe";
 import {ShoppingcartComponent} from "./pages/shoppingcart/shoppingcart.component";
 import {ShoppingcartService} from "./services/shoppingcart.service";
 import {OrderpricePipe} from "./pipes/orderprice-pipe";
-import {MyDatePickerModule} from "mydatepicker";
+import { MyDatePickerModule } from 'mydatepicker';
 import {StockService} from "./services/stock.service";
 import {CategoryService} from "./services/category.service";
 import {OrderComponent} from "./pages/order/order.component";
@@ -33,6 +33,7 @@ import {LoginService} from "./services/login.service";
 import {OrderService} from "./services/order.service";
 import {InvoiceComponent} from "./directives/invoice/invoice.component";
 import {PostOrderComponent} from "./pages/post-order/post-order.component";
+import {TaxPipe} from "./pipes/price-tax-pipe";
 import {AgmCoreModule} from "angular2-google-maps/core";
 
 const appRoutes: Routes = [
@@ -85,6 +86,7 @@ const appRoutes: Routes = [
     LoginComponent,
     ContactComponent,
     ThanksOrderComponent,
+    TaxPipe,
 
   ],
   imports: [

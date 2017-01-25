@@ -48,7 +48,7 @@ export class LoginService {
 
   getCustomer() {
     let customer = localStorage.getItem(this.localStorageKey);
-    this.customer = customer ? JSON.parse(customer) : this.customer;
+    this.customer = customer ? JSON.parse(customer) : undefined;
     return this.customer;
   }
 
