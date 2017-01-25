@@ -1,5 +1,4 @@
 import {CategoryFilterPipe} from "../pipes/category-filter-pipe";
-import {Supplier} from "../models/supplier";
 import {Category} from "../models/category";
 
 
@@ -42,8 +41,7 @@ describe('Filter Pipe Tests', () => {
     let categories = [category2, category3];
     var sorted = pipe.transform(products, categories);
     console.log(JSON.stringify(sorted));
-    expect(sorted[0].name).toEqual('Car');
-    expect(sorted[1].name).toEqual('Boat');
-    expect(sorted[2].name).toEqual('Plane');
+    expect(sorted[0].name).toEqual('Boat');
+    expect(sorted[1].name).toEqual('Plane');
   });
 });
