@@ -52,7 +52,7 @@ const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'logout', component: LogoutComponent},
   {path: 'login/error', component: LoginComponent},
-  {path: 'postorder', component: PostOrderComponent}
+  {path: 'postorder/:orderid', component: PostOrderComponent}
 ];
 
 @NgModule({

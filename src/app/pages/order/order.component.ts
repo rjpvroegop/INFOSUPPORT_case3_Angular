@@ -60,7 +60,7 @@ export class OrderComponent implements OnInit {
     this.order = this.shoppingcartService.getOrder();
     this.orderService.saveOrder(this.order).then(response => this.invoiceOrder = <Order>response);
     this.finishedOrderProcess = true;
-    // this.shoppingcartService.emptyCart();
+    this.shoppingcartService.emptyCart();
   }
 
   setDummyCustomer(){
