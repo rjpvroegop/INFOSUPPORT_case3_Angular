@@ -1,10 +1,10 @@
-<hr>
-
-<shopping-cart [shoppingcartview]="false"></shopping-cart>
-
-<hr>
-
 <div class="place-order" *ngIf="!finishedOrderProcess">
+  <hr>
+
+  <shopping-cart [shoppingcartview]="false"></shopping-cart>
+
+  <hr>
+
   <div class="row">
     <div class="col-lg-4 col-md-12 col-xs-12">
       <p><strong>Information:</strong></p>
@@ -65,7 +65,7 @@
       <p>
         <input type="checkbox" id="terms-conditions-checkbox" [(ngModel)]="termsaccept"/>
         <label for="terms-conditions-checkbox">
-          I hereby agree to the
+          I agree to the
           <a href="../../../assets/docs/kantilever_terms_conditions.pdf" target="_blank">Terms and Conditions</a>
         </label>
       </p>

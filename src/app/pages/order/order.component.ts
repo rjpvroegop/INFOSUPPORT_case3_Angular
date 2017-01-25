@@ -33,15 +33,19 @@ export class OrderComponent implements OnInit {
   }
 
   checkCustomer(){
-    let customer = this.loginService.getCustomer();
 
-    if(!customer) {
+    if(!this.loginService.loggedIn()) {
       window.location.replace("/login");
     } else {
+      let customer = this.loginService.getCustomer();
       this.shoppingcartService.setCustomer(customer);
       this.shoppingcartService.setBillingAddress(customer.addresses[0]);
       this.shoppingcartService.setShippingAddress(customer.addresses[0]);
       this.order = this.shoppingcartService.getOrder();
+
+      if(!this.order.orderitems){
+        window.location.replace("/catalog")
+      }
     }
   }
 

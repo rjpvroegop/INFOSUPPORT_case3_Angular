@@ -62,7 +62,7 @@
                 <td class="text-left">{{orderitem.product.name}}</td>
                 <td class="text-left">{{orderitem.product.bsKey}}</td>
                 <td class="text-left">{{orderitem.amount}}</td>
-                <td class="text-left">$ {{orderitem.product.price}}</td>
+                <td class="text-left">$ {{(orderitem.product.price).toFixed(2)}}</td>
             </tr>
             <tr>
               <td colspan="4">
@@ -72,17 +72,17 @@
             <tr>
                 <td colspan="2"> </td>
                 <th>Subtotal</th>
-                <td class="text-right">$ {{order | orderprice}}</td>
+                <td class="text-right">$ {{(order | orderprice).toFixed(2)}}</td>
             </tr>
             <tr>
                 <td colspan="2"> </td>
-                <th>Tax.</th>
-                <td class="text-right">$ {{order | orderprice | tax}}</td>
+                <th>Tax. (21%)</th>
+                <td class="text-right">$ {{(order | orderprice | tax).toFixed(2)}}</td>
             </tr>
             <tr>
                 <td colspan="2"> </td>
                 <th>Total Price</th>
-                <td class="text-right">$ {{(order | orderprice) + (order | orderprice | tax)}}</td>
+                <td class="text-right">$ {{((order | orderprice) + (order | orderprice | tax).toFixed(2))}}</td>
             </tr>
         </table>
     </div>
