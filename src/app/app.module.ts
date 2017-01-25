@@ -93,7 +93,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    MyDatePickerModule,
+    // MyDatePickerModule,
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyCoENbGFFZVGiwoZU0btVyjzgcwjztzoDE"
     })
