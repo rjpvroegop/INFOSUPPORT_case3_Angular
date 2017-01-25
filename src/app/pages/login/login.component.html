@@ -16,8 +16,11 @@
           <input type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="account.password"
                  required name="password">
         </div>
+        <a class="btn btn-default pull-left" href="/customer">
+          <span class="glyphicon glyphicon-log-in"></span>  Sign up
+        </a>
         <a class="btn btn-primary pull-right" (click)="loginService.login(account.userName, account.password)">
-          <span class="glyphicon glyphicon-log-in" aria-hidden="true">  Login</span>
+          <span class="glyphicon glyphicon-log-in"></span>  Login
         </a>
       </form>
     </div>
