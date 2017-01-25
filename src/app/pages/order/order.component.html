@@ -5,64 +5,72 @@
 <hr>
 
 <div class="row">
-  <div class="col-lg-4 col-md-12 col-xs-12">
-    <p><strong>Information:</strong></p>
-    <blockquote>
-      <p class="info-label"><span>First name:</span> {{order.customer.firstName}}</p>
-      <p class="info-label"><span>Last name:</span> {{order.customer.lastName}}</p>
-      <p class="info-label"><span>Email:</span> {{order.customer.email}}</p>
-      <p class="info-label"><span>Phone number:</span> {{order.customer.phone}}</p>
-    </blockquote>
-  </div>
-  <div class="col-lg-4 col-md-6 col-xs-12">
-    <p><strong>Choose your delivery address:</strong></p>
-
-    <div>
-      <div *ngFor="let address of order.customer.addresses"
-           [ngClass]="{'alert-info': order.shippingAddress.id == address.id }"
-           (click)="setShippingAddress(address)"
-      >
+    <div class="col-lg-4 col-md-12 col-xs-12">
+        <p><strong>Information:</strong></p>
         <blockquote>
-          <label>
+            <p class="info-label"><span>First name:</span> {{order.customer.firstName}}</p>
+            <p class="info-label"><span>Last name:</span> {{order.customer.lastName}}</p>
+            <p class="info-label"><span>Email:</span> {{order.customer.email}}</p>
+            <p class="info-label"><span>Phone number:</span> {{order.customer.phone}}</p>
+        </blockquote>
+    </div>
+    <div class="col-lg-4 col-md-6 col-xs-12">
+        <p><strong>Choose your delivery address:</strong></p>
+
+        <div>
+            <div *ngFor="let address of order.customer.addresses"
+                 [ngClass]="{'alert-info': order.shippingAddress.id == address.id }"
+                 (click)="setShippingAddress(address)"
+            >
+                <blockquote>
+                    <label>
             <span>
             <p>{{address.city}}</p>
             <p>{{address.street}}</p>
             <p>{{address.zip}}</p>
           </span>
-          </label>
-        </blockquote>
-      </div>
+                    </label>
+                </blockquote>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div class="col-lg-4 col-md-6 col-xs-12">
-    <p><strong>Choose your billing address:</strong></p>
+    <div class="col-lg-4 col-md-6 col-xs-12">
+        <p><strong>Choose your billing address:</strong></p>
 
-    <div>
-      <div *ngFor="let address of order.customer.addresses"
-           [ngClass]="{'alert-info': order.billingAddress.id == address.id }"
-           (click)="setBillingAddress(address)"
-      >
-        <blockquote>
-          <label>
+        <div>
+            <div *ngFor="let address of order.customer.addresses"
+                 [ngClass]="{'alert-info': order.billingAddress.id == address.id }"
+                 (click)="setBillingAddress(address)"
+            >
+                <blockquote>
+                    <label>
             <span>
             <p>{{address.city}}</p>
             <p>{{address.street}}</p>
             <p>{{address.zip}}</p>
           </span>
-          </label>
-        </blockquote>
-      </div>
+                    </label>
+                </blockquote>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <hr>
 
 <div class="row">
-  <div class="col-sm-12">
-    <a class="shoppingcart-icon-small btn btn-info" (click)="placeOrder()">
-      <span class="glyphicon glyphicon-shopping-cart"></span> Place order
-    </a>
-  </div>
+    <div class="col-sm-12">
+        <p>
+            <input type="checkbox" id="terms-conditions-checkbox" [(ngModel)]="termsaccept" />
+            <label for="terms-conditions-checkbox">
+                I hereby agree to the
+                <a href="../../../assets/docs/kantilever_terms_conditions.docx">Terms and Conditions</a>
+            </label>
+            {{termsaccept}}
+        </p>
+        <a class="shoppingcart-icon-small btn btn-info" (click)="!termsaccept && placeOrder()" [ngClass]="{disabled: !termsaccept}">
+            <span class="glyphicon glyphicon-shopping-cart"></span> Place order
+        </a>
+    </div>
 </div>

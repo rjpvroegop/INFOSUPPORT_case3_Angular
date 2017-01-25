@@ -16,6 +16,8 @@ import {Address} from "../../models/address";
 export class OrderComponent implements OnInit {
   order: Order = new Order();
 
+  termsaccept: boolean = false;
+
   constructor(private orderService: OrderService, private accountService: AccountService, private shoppingcartService: ShoppingcartService) {
     this.order.customer = this.order.customer || new Customer();
     this.order.customer.addresses = this.order.customer.addresses || [];
