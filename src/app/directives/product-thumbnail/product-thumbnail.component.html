@@ -2,8 +2,8 @@
   <a routerLink="/product/{{product.id}}"><img [src]="product.image" alt="product_image"></a>
   <hr/>
   <p><strong>{{product.name}}</strong></p>
-  <p><strong>$ {{product.price}}</strong></p>
-  <p><small>$ {{product.price + (product.price | tax)}} incl.</small></p>
+  <p><strong>$ {{(product.price).toFixed(2)}}</strong></p>
+  <p><small>$ {{(product.price + (product.price | tax)).toFixed(2)}} incl.</small></p>
   <div class="row">
     <div class="col-md-12">
       <a class="btn btn-primary addtocart" (click)="addProductToCart(product)">

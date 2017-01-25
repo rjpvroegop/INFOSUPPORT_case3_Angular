@@ -22,10 +22,10 @@
       <dd class="col-sm-8">$ {{product.price}}</dd>
 
       <dt class="col-sm-4">Tax</dt>
-      <dd class="col-sm-8">$ {{product.price | tax}}</dd>
+      <dd class="col-sm-8">$ {{(product.price | tax).toFixed(2)}}</dd>
 
       <dt class="col-sm-4">Price incl. Tax</dt>
-      <dd class="col-sm-8">$ {{product.price + (product.price | tax)}}</dd>
+      <dd class="col-sm-8">$ {{(product.price + (product.price | tax)).toFixed(2)}}</dd>
 
       <dt class="col-sm-4">Supplier</dt>
       <dd class="col-sm-8">{{product.supplier ? product.supplier.name : ''}}</dd>

@@ -16,6 +16,7 @@ import {LoginService} from "../../services/login.service";
 })
 export class OrderComponent implements OnInit {
   order: Order = new Order();
+  termsaccept: boolean = false;
 
   constructor(private orderService: OrderService, private accountService: AccountService, private shoppingcartService: ShoppingcartService, private loginService: LoginService) {
     this.order.customer = this.order.customer || new Customer();
