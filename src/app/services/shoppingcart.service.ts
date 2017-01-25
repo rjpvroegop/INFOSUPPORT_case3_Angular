@@ -101,7 +101,7 @@ export class ShoppingcartService {
 
     this.saveOrder();
 
-    new popupMessage('All products', 'are removed from your shoppingcart', 'danger');
+    // new popupMessage('All products', 'are removed from your shoppingcart', 'danger');
   }
 
   private saveOrder() {

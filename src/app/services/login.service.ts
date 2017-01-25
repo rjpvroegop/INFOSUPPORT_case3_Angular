@@ -20,7 +20,9 @@ export class LoginService {
             this.saveCustomer(this.extractAccount(data).customer);
             window.history.back();
           },
-          err => new popupMessage('Login failed', 'Username and password not correct', 'danger')
+          (err) => {
+            new popupMessage('Login failed', 'Username and password not correct', 'danger')
+          }
         )
       ;
     })
@@ -40,7 +42,7 @@ export class LoginService {
     return account;
   }
 
-  private saveCustomer(customer: Customer) {
+  saveCustomer(customer: Customer) {
     localStorage.setItem(this.localStorageKey, JSON.stringify(customer));
     this.customer = customer;
   }

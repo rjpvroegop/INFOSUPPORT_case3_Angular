@@ -53,7 +53,9 @@
     <hr>
 
     <h4 class="text-right">Shipping costs: ${{((shoppingcartService.getOrder() | orderprice) < 200 ? 5 : 0).toFixed(2)}}</h4>
-    <h3 class="text-right">Total: ${{(shoppingcartService.getOrder() | orderprice).toFixed(2)}}</h3>
+    <h4 class="text-right">Subtotal: ${{(shoppingcartService.getOrder() | orderprice).toFixed(2)}}</h4>
+    <h4 class="text-right">Tax: ${{(shoppingcartService.getOrder() | orderprice | tax).toFixed(2)}}</h4>
+    <h3 class="text-right">Total: ${{((shoppingcartService.getOrder() | orderprice) + (shoppingcartService.getOrder() | orderprice | tax)).toFixed(2)}}</h3>
 
     <div *ngIf="shoppingcartview">
       <a class="shoppingcart-icon-small btn btn-info" style="cursor:pointer;" href="/order">

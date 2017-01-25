@@ -16,6 +16,7 @@ import {popupMessage} from "../../../assets/js/popup";
 export class ProductComponent {
   product: Product = new Product();
   stock: number;
+  hidepopup:boolean = true;
 
   constructor(private route: ActivatedRoute, private productService: ProductService, private shoppingcartService: ShoppingcartService, private stockService: StockService) {
     this.route.params.subscribe(params => {
@@ -34,12 +35,16 @@ export class ProductComponent {
     });
   }
 
-  addProductToCart(product: Product){
-    if(this.stock <= 0){
-      new popupMessage('Product is added to your shoppingcart.', 'Please note: This product is out of stock. Delivery may take some time.', 'warning')
-    }
+  addProductToCart(product: Product) {
+      this.showAddedPopup();
+      this.shoppingcartService.addProduct(product, true);
+  }
 
-    this.shoppingcartService.addProduct(product, true);
+  showAddedPopup(){
+    this.hidepopup = false;
+    setTimeout(()=> {
+      this.hidepopup = true
+    }, 2000);
   }
 
 }

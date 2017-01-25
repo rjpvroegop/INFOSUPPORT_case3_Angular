@@ -31,7 +31,9 @@
       <dd class="col-sm-8">{{product.supplier ? product.supplier.name : ''}}</dd>
     </dl>
     <hr/>
-    <a class="btn btn-primary" (click)="addProductToCart(product)">Add To Cart</a>
+    <a class="btn btn-primary addtocart" (click)="addProductToCart(product)">Add To Cart
+      <p [ngClass]="{hidden: hidepopup, orange: stock == 0}"
+         class="triangle-border left popup-message">Added to shoppingcart</p></a>
 
   </div>
 </div>
