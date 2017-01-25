@@ -6,6 +6,7 @@ import {AccountService} from "../../services/account.service";
 import {Account} from "../../models/account";
 import {ShoppingcartService} from "../../services/shoppingcart.service";
 import {Address} from "../../models/address";
+import {LoginService} from "../../services/login.service";
 
 @Component({
   moduleId: module.id,
@@ -15,18 +16,29 @@ import {Address} from "../../models/address";
 })
 export class OrderComponent implements OnInit {
   order: Order = new Order();
+  termsaccept: boolean = false;
 
-  constructor(private orderService: OrderService, private accountService: AccountService, private shoppingcartService: ShoppingcartService) {
+  constructor(private orderService: OrderService, private accountService: AccountService, private shoppingcartService: ShoppingcartService, private loginService: LoginService) {
     this.order.customer = this.order.customer || new Customer();
     this.order.customer.addresses = this.order.customer.addresses || [];
     this.order.orderitems = this.order.orderitems || [];
+
+    this.checkCustomer();
   }
 
   ngOnInit() {
-    console.log(this.shoppingcartService.getOrder());
-    if(!this.order.customer.id) {
-      this.setDummyCustomer();
-    //   // window.location.replace("/login");
+  }
+
+  checkCustomer(){
+    let customer = this.loginService.getCustomer();
+
+    if(!customer) {
+      window.location.replace("/login");
+    } else {
+      this.shoppingcartService.setCustomer(customer);
+      this.shoppingcartService.setBillingAddress(customer.addresses[0]);
+      this.shoppingcartService.setShippingAddress(customer.addresses[0]);
+      this.order = this.shoppingcartService.getOrder();
     }
   }
 

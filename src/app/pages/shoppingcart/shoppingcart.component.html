@@ -25,7 +25,7 @@
         <td><a href="/product/{{oi.product.id}}"><img [src]="oi.product.image" style="max-height:40px;max-width:40px;"></a>
         </td>
         <td><a href="/product/{{oi.product.id}}">{{oi.product.name}}</a></td>
-        <td>${{oi.product.price}}</td>
+        <td>${{(oi.product.price).toFixed(2)}} (<small>$ {{(oi.product.price + (oi.product.price | tax)).toFixed(2)}} incl.</small>)</td>
         <td scope="row">{{oi.amount}}</td>
         <td *ngIf="shoppingcartview">
           <div class="row">
@@ -50,6 +50,9 @@
       </tbody>
     </table>
 
+    <hr>
+
+    <h4>Shipping costs: ${{((shoppingcartService.getOrder() | orderprice) < 200 ? 5 : 0).toFixed(2)}}</h4>
     <h3>Total: ${{(shoppingcartService.getOrder() | orderprice).toFixed(2)}}</h3>
 
     <div *ngIf="shoppingcartview">
@@ -60,9 +63,5 @@
         <span class="glyphicon glyphicon-remove"></span> Empty
       </a>
     </div>
-  </div>
-  <div *ngIf="shoppingcartview" class="col-sm-12">
-    <hr>
-    <h1 class="shoppingcart-icon-large"><span class="glyphicon glyphicon-shopping-cart"></span></h1>
   </div>
 </div>

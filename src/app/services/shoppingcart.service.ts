@@ -10,6 +10,7 @@ import {Payment} from "../models/payment";
 @Injectable()
 export class ShoppingcartService {
   private order: Order = new Order();
+  private localstorageKey: string = "kantilevershoppingcart";
 
   constructor(){
     this.order.orderitems = [];
@@ -104,11 +105,11 @@ export class ShoppingcartService {
   }
 
   private saveOrder() {
-    localStorage.setItem('kantilevershoppingcart', JSON.stringify(this.order));
+    localStorage.setItem(this.localstorageKey, JSON.stringify(this.order));
   }
 
   getOrder(): Order {
-    let shoppingcartOrder = localStorage.getItem('kantilevershoppingcart');
+    let shoppingcartOrder = localStorage.getItem(this.localstorageKey);
 
     if(!shoppingcartOrder){
       this.saveOrder();
