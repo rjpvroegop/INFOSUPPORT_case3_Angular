@@ -18,6 +18,9 @@ export class OrderComponent implements OnInit {
   order: Order = new Order();
   termsaccept: boolean = false;
 
+  finishedOrderProcess = false;
+  invoiceOrder: Order = new Order();
+
   constructor(private orderService: OrderService, private accountService: AccountService, private shoppingcartService: ShoppingcartService, private loginService: LoginService) {
     this.order.customer = this.order.customer || new Customer();
     this.order.customer.addresses = this.order.customer.addresses || [];
@@ -55,7 +58,9 @@ export class OrderComponent implements OnInit {
   placeOrder(){
     this.shoppingcartService.setOrderPlacementDetails();
     this.order = this.shoppingcartService.getOrder();
-    this.orderService.saveOrder(this.order).then(response => console.log(response));
+    this.orderService.saveOrder(this.order).then(response => this.invoiceOrder = <Order>response);
+    this.finishedOrderProcess = true;
+    // this.shoppingcartService.emptyCart();
   }
 
   setDummyCustomer(){

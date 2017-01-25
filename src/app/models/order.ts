@@ -4,6 +4,7 @@ import {Address} from "./address";
 import {Payment} from "./payment";
 export class Order {
   id: string;
+  bsKey: string;
   orderTime: string;
   sendTime: string;
   billingAddress: Address;

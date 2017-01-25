@@ -16,12 +16,9 @@
         <dd>K.v.K. 3013 5370</dd>
         <dd>BTW NL8062.30.277.B01</dd>
     </dl>
-    <div class="col-sm-2">
-        <h1>INVOICE</h1>
-    </div>
 </div>
 <hr/>
-<div class="row">
+<div class="row" *ngIf="order.id">
     <dl class="col-sm-3">
         <dt>Invoice Address</dt>
         <dd>{{order.customer.firstName}} {{order.customer.lastName}}</dd>
@@ -58,35 +55,34 @@
             <tr>
                 <th>Product Name</th>
                 <th>Product Code</th>
-                <th class="text-right">Amount</th>
-                <th class="text-right">Price</th>
-                <th class="text-right">Tax</th>
-                <th class="text-right">Tax amount</th>
-                <th class="text-right">Subtotal</th>
+                <th>Amount</th>
+                <th>Price</th>
             </tr>
             <tr *ngFor="let orderitem of order.orderitems">
-                <td>{{orderitem.product.name}}</td>
-                <td>{{orderitem.product.bsKey}}</td>
-                <td class="text-right">{{orderitem.amount}}</td>
-                <td class="text-right">€ {{orderitem.product.price}}</td>
-                <td class="text-right">21%</td>
-                <td class="text-right">€ {{orderitem.tax}}</td>
-                <td class="text-right">€ {{orderitem.price}}</td>
+                <td class="text-left">{{orderitem.product.name}}</td>
+                <td class="text-left">{{orderitem.product.bsKey}}</td>
+                <td class="text-left">{{orderitem.amount}}</td>
+                <td class="text-left">$ {{orderitem.product.price}}</td>
             </tr>
             <tr>
-                <td colspan="5"> </td>
-                <th style="border-top: solid 1px;">Subtotal</th>
-                <td class="text-right" style="border-top: solid 1px">€ {{order | orderprice}}</td>
+              <td colspan="4">
+                <hr>
+              </td>
             </tr>
             <tr>
-                <td colspan="5"> </td>
+                <td colspan="2"> </td>
+                <th>Subtotal</th>
+                <td class="text-right">$ {{order | orderprice}}</td>
+            </tr>
+            <tr>
+                <td colspan="2"> </td>
                 <th>Tax.</th>
-                <td class="text-right">€ {{orderTest.tax}}</td>
+                <td class="text-right">$ {{order | orderprice | tax}}</td>
             </tr>
             <tr>
-                <td colspan="5"> </td>
+                <td colspan="2"> </td>
                 <th>Total Price</th>
-                <td class="text-right">€ {{orderTest.total}}</td>
+                <td class="text-right">$ {{(order | orderprice) + (order | orderprice | tax)}}</td>
             </tr>
         </table>
     </div>
