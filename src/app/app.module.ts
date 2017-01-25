@@ -21,7 +21,7 @@ import {SearchPipe} from "./pipes/search-pipe";
 import {ShoppingcartComponent} from "./pages/shoppingcart/shoppingcart.component";
 import {ShoppingcartService} from "./services/shoppingcart.service";
 import {OrderpricePipe} from "./pipes/orderprice-pipe";
-import {MyDatePickerModule} from "mydatepicker";
+import { MyDatePickerModule } from 'mydatepicker';
 import {StockService} from "./services/stock.service";
 import {CategoryService} from "./services/category.service";
 import {OrderComponent} from "./pages/order/order.component";
@@ -34,6 +34,7 @@ import {OrderService} from "./services/order.service";
 import {InvoiceComponent} from "./directives/invoice/invoice.component";
 import {PostOrderComponent} from "./pages/post-order/post-order.component";
 import {TaxPipe} from "./pipes/price-tax-pipe";
+import {AgmCoreModule} from "angular2-google-maps/core";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -41,7 +42,7 @@ const appRoutes: Routes = [
   {path: 'catalog/:category', component: CatalogComponent},
   {path: 'product/:id', component: ProductComponent},
   {path: 'customer', component: CustomerComponent},
-  {path: 'customer/:id', component: CustomerComponent},
+  {path: 'customer/:customerid', component: CustomerComponent},
   {path: 'order/:id', component: OrderComponent},
   {path: 'order', component: OrderComponent},
   {path: 'shoppingcart', component: ShoppingcartComponent},
@@ -95,6 +96,9 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     MyDatePickerModule,
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyCoENbGFFZVGiwoZU0btVyjzgcwjztzoDE"
+    })
   ],
   providers: [
     // services

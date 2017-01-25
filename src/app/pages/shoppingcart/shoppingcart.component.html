@@ -25,7 +25,7 @@
         <td><a href="/product/{{oi.product.id}}"><img [src]="oi.product.image" style="max-height:40px;max-width:40px;"></a>
         </td>
         <td><a href="/product/{{oi.product.id}}">{{oi.product.name}}</a></td>
-        <td>${{oi.product.price}} (<small>$ {{oi.price + (oi.price | tax)}} incl.</small>)</td>
+        <td>${{oi.product.price}} (<small>$ {{oi.product.price + (oi.product.price | tax)}} incl.</small>)</td>
         <td scope="row">{{oi.amount}}</td>
         <td *ngIf="shoppingcartview">
           <div class="row">
