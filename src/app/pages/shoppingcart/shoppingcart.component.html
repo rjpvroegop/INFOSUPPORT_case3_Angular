@@ -58,10 +58,10 @@
     <h3 class="text-right">Total: ${{((shoppingcartService.getOrder() | orderprice) + (shoppingcartService.getOrder() | orderprice | tax)).toFixed(2)}}</h3>
 
     <div *ngIf="shoppingcartview">
-      <a class="shoppingcart-icon-small btn btn-info" style="cursor:pointer;" href="/order">
+      <a class="shoppingcart-icon-small btn btn-primary btn-sm pull-right" style="cursor:pointer;" href="/order">
         <span class="glyphicon glyphicon-shopping-cart"></span> Place order
       </a>
-      <a class="shoppingcart-icon-small btn btn-danger" style="cursor:pointer;" (click)="emptyCart()">
+      <a class="shoppingcart-icon-small btn btn-danger btn-sm pull-right" style="cursor:pointer;" (click)="emptyCart()">
         <span class="glyphicon glyphicon-remove"></span> Empty
       </a>
     </div>
