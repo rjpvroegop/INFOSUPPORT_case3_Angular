@@ -1,133 +1,23 @@
-# Kantilever backend
+# KantileverAngular
 
-To access the API, use the base URL with the required parameters.
-For example, to find the stock item with `id == 1`, use the following url in development mode:
+This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.
 
->http://localhost:10001/bsvoorraadbeheer/stock/1
+## Installation
+Run `npm install` to install dependencies.
+Run `npm install -g angular-cli` to install angular-cli.
 
-To access the API, use the base URL with the required parameters.
-For example, to find the stock item with `id == 1`, use the following url in development mode:
+## Development server
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
->http://localhost:10001/bsvoorraadbeheer/stock/1
+## Build
 
-## Discovery server
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-### Ports
+## Running unit tests
 
-**Eureka**: 10000
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-**Zuul API**: 10001
+## Running end-to-end tests
 
-**BSCatalogusbeher**: 10003
-
-**BSKlantbeheer**: 10005
-
-**BSBestellingenbeheer**: 10007
-
-**BSVoorraadbeheer**: 10009
-
-**PcSBestellen**: 10011
-
-## Zuul API
-
-### API Methods
-
-API Endpoints
-
-1. Eureka:
-
-a. http://localhost:10000
-
-2. Zuul API:
-
-```
-i. http://localhost:10001/{{servicename}}
-
-ii.    http://localhost:10001/login (post a user)
-
-iii.   http://localhost:10001/logout
-```
-
-3. BSCatalogusbeheer
-
-a. http://localhost:10001/bscatalogusbeheer
-
-```
-i. /orders                   get all orders
-
-ii.    /orders/posted             get posted orders
-
-iii.   /orders/packed          get packed orders
-
-iv.    /orders/{{id}}             get order
-
-v. /orders/pack/{{id}}          (post) change status
-
-vi.    /orders/send/{{id}}          (post) change status
-
-vii.   /orders/datavaultdata/{{interval}}    get BSKeys
-
-viii.  /orders                (post)     new order
-```
-
-4. BSKlantbeheer
-
-a. http://localhost:10001/bsklantbeheer
-
-```
-i. /address            (post) new Address
-
-ii.    /address/{{addressid}}          get address
-
-iii.   /address/delete/{{addressid}}     (put)  remove address
-
-iv.    /customers/{{id}}           get customer
-
-v. /customers/editcustomer       (put)  edit customer
-
-vi.    /accounts/{{id}}            get account
-
-vii.   /accounts/login/{{username}}/{{password}}  login
-
-viii.  /accounts/newaccount         (post) register
-```
-
-5. BSVoorraadbeheer
-
-a. http://localhost:10001/bsvoorraadbeheer
-
-```
-i. /stock/{{productid}}            get stock item
-
-ii.    /stock             (put)  mutate stock item
-
-iii.   /stock                get all stock items
-```
-
-6. BSBestellingenbeheer
-
-a. http://localhost:10001/bsbestellingenbeheer
-```
-i. /orders                   get all orders
-
-ii.    /orders/posted             get posted orders
-
-iii.   /orders/packed          get packed orders
-
-iv.    /orders/{{id}}             get order
-
-v. /orders/pack/{{id}}          (post) pack order
-
-vi.    /orders/send/{{id}}          (post) send order
-
-vii.   /orders/datavaultdata/{{interval}}    get order BSKeys of interval
-
-viii.  /orders                (post) new order
-```
-7. ISDatavault
-
-a. http://localhost:10001/isdatavault
-```
-i. /datavault/{{interval}}             get order BSKeys of interval
-```
-
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Before running the tests make sure you are serving the app via `ng serve`.
