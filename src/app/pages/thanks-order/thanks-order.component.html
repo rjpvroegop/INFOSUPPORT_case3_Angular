@@ -1,0 +1,23 @@
+<a class="btn btn-primary pull-right" href="/catalog">
+  <small>Continu shopping</small>
+</a>
+<a target="_blank" class="btn btn-primary pull-right" href="/postorder/{{order.id}}">
+  <small>print order</small>
+</a>
+
+<h2>Order Complete</h2>
+
+<hr>
+
+
+<div class="jumbotron text-center">
+  <h2>THANK YOU!</h2>
+  <p>Thank you for your order. We will send your products as soon as possible.</p>
+
+  <hr>
+
+  <h2>Invoice</h2>
+
+  <invoice-view [order]="order"></invoice-view>
+
+</div>

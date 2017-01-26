@@ -3,20 +3,24 @@ import {Http} from "@angular/http";
 import {Account} from "../models/account";
 import {environment} from "../../environments/environment";
 import {popupMessage} from "../../assets/js/popup";
+import {LoginService} from "./login.service";
 
 @Injectable()
 export class AccountService {
   accountUrl = environment.url + "/bsklantbeheer/accounts/";
   saveCustomerUrl = environment.url + "/bsklantbeheer/customers/editcustomer";
   newAccountUrl = environment.url + "/bsklantbeheer/accounts/newaccount";
-
-  constructor(private http: Http) {
+  loginUrl = environment.url + "/login";
+  constructor(private http: Http, private loginService: LoginService) {
   }
 
   updateCustomer(customer) {
     return new Promise((res, rej) => {
       this.http.put(this.saveCustomerUrl, customer).subscribe(
-        data => res(data.json()),
+        data => {
+          this.loginService.saveCustomer(customer);
+          res(data.json());
+        },
         err => new popupMessage('Customer update failed', 'Customer update failed', 'danger'));
     });
   }
@@ -29,6 +33,7 @@ export class AccountService {
       );
     });
   }
+
 
   getAccount(id) {
     return new Promise((res, rej) => {

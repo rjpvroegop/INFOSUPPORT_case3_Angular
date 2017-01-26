@@ -1,6 +1,7 @@
 <div class="row">
 
   <div class="col-md-6 col-md-offset-3">
+    <p class="text-danger" *ngIf="errorMessage"><strong>You need to login</strong></p>
     <div class="jumbotron">
       <h2>Login</h2>
       <hr/>
@@ -15,8 +16,11 @@
           <input type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="account.password"
                  required name="password">
         </div>
-        <a class="btn btn-primary pull-right" (click)="login()">
-          <span class="glyphicon glyphicon-log-in" aria-hidden="true">  Login</span>
+        <a class="btn btn-default pull-left" href="/customer">
+          <span class="glyphicon glyphicon-log-in"></span>  Sign up
+        </a>
+        <a class="btn btn-primary pull-right" (click)="loginService.login(account.userName, account.password)">
+          <span class="glyphicon glyphicon-log-in"></span>  Login
         </a>
       </form>
     </div>

@@ -1,0 +1,96 @@
+<div class="row">
+    <div class="col-sm-3">
+        <img src="../../../assets/img/logo.png" style="width: 100%"/>
+        <!--(Image here)-->
+    </div>
+    <dl class="col-sm-3">
+        <dd>Kantilever B.V.</dd>
+        <dd>Kruisboog 42</dd>
+        <dd>3905 TG Veenendaal</dd>
+        <dd>The Netherlands</dd>
+    </dl>
+    <dl class="col-sm-4">
+        <dd>Tel: +31 318 552020</dd>
+        <dd>E-mail: info@kantilever.nl</dd>
+        <dd>IBAN: NL44 INGB 00058 54051</dd>
+        <dd>K.v.K. 3013 5370</dd>
+        <dd>BTW NL8062.30.277.B01</dd>
+    </dl>
+</div>
+<hr/>
+<div class="row" *ngIf="order.id">
+    <dl class="col-sm-3">
+        <dt>Invoice Address</dt>
+        <dd>{{order.customer.firstName}} {{order.customer.lastName}}</dd>
+        <dd>{{order.billingAddress.street}}</dd>
+        <dd>{{order.billingAddress.zip}} {{order.billingAddress.city}}</dd>
+        <dd>The Netherlands</dd>
+        <dd>{{order.customer.email}}</dd>
+    </dl>
+    <dl class="col-sm-3">
+        <dt>Delivery Address</dt>
+        <dd>{{order.customer.firstName}} {{order.customer.lastName}}</dd>
+        <dd>{{order.shippingAddress.street}}</dd>
+        <dd>{{order.shippingAddress.zip}} {{order.shippingAddress.city}}</dd>
+        <dd>The Netherlands</dd>
+        <dd>{{order.customer.email}}</dd>
+    </dl>
+    <dl class="col-sm-5">
+        <dt class="col-sm-6">Order date:</dt>
+        <dd class="col-sm-6">{{order.orderTime}}</dd>
+
+        <dt class="col-sm-6">Order number:</dt>
+        <dd class="col-sm-6">{{order.bsKey}}</dd>
+
+        <dt class="col-sm-6">Customer ID:</dt>
+        <dd class="col-sm-6">{{order.customer.bsKey}}</dd>
+    </dl>
+</div>
+
+<hr/>
+<div class="row">
+    <div class="col-sm-12">
+        <h3>Products ordered:</h3>
+        <table class="table">
+            <tr>
+                <th>Product Name</th>
+                <th>Product Code</th>
+                <th>Amount</th>
+                <th>Price</th>
+            </tr>
+            <tr *ngFor="let orderitem of order.orderitems">
+                <td class="text-left">{{orderitem.product.name}}</td>
+                <td class="text-left">{{orderitem.product.bsKey}}</td>
+                <td class="text-left">{{orderitem.amount}}</td>
+                <td class="text-left">$ {{(orderitem.product.price).toFixed(2)}}</td>
+            </tr>
+            <tr>
+              <td colspan="4">
+                <hr>
+              </td>
+            </tr>
+            <tr>
+                <td colspan="2"> </td>
+                <th>Subtotal</th>
+                <td class="text-right">$ {{(order | orderprice).toFixed(2)}}</td>
+            </tr>
+            <tr>
+                <td colspan="2"> </td>
+                <th>Tax. (21%)</th>
+                <td class="text-right">$ {{(order | orderprice | tax).toFixed(2)}}</td>
+            </tr>
+            <tr>
+                <td colspan="2"> </td>
+                <th>Total Price</th>
+                <td class="text-right">$ {{((order | orderprice) + (order | orderprice | tax)).toFixed(2)}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<hr/>
+
+<div class="row">
+    Our
+    &nbsp;<strong>terms and conditions</strong>&nbsp;
+    apply to all our deliveries
+</div>

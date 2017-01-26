@@ -3,6 +3,7 @@ import {Stockitem} from "./stockitem";
 import {Category} from "./category";
 export class Product {
   id: number;
+  bsKey: string;
   price: number;
   name: string;
   description: string;
