@@ -1,7 +1,6 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit} from '@angular/core';
 import {Product} from "../../models/product";
 import {ShoppingcartService} from "../../services/shoppingcart.service";
-import {Input} from "@angular/core/src/metadata/directives";
 
 @Component({
   moduleId: module.id,
@@ -10,8 +9,6 @@ import {Input} from "@angular/core/src/metadata/directives";
   styleUrls: ['shoppingcart.component.css']
 })
 export class ShoppingcartComponent implements OnInit {
-  @Input() shoppingcartview: boolean = true;
-
   ngOnInit(): void {
     // console.log(this.shoppingcartService.getOrder());
   }
@@ -20,7 +17,7 @@ export class ShoppingcartComponent implements OnInit {
   }
 
   addProduct(product: Product){
-    this.shoppingcartService.addProduct(product, true);
+    this.shoppingcartService.addProduct(product);
   }
 
   removeProduct(product: Product){

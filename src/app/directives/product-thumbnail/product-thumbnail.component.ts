@@ -15,9 +15,6 @@ import {popupMessage} from "../../../assets/js/popup";
 export class ProductThumbnailComponent implements OnInit {
   @Input() product: Product;
   stock: number = 0;
-  hidepopup: boolean = true;
-  popupMessageOk = 'added to shoppingcart<span class="glyphicon glyphicon-ok"></span>';
-  popupMessageNo = 'added to shoppingcart.<br>Item is out of stock.<br>Delivery may take some time.';
 
   constructor(private shoppingcartService: ShoppingcartService, private stockService: StockService) {
 
@@ -31,17 +28,15 @@ export class ProductThumbnailComponent implements OnInit {
       .then((stockitem: Stockitem) => {
         this.stock = stockitem.stock;
       })
-      .then(()=> {
-        this.showAddedPopup();
-        this.shoppingcartService.addProduct(product, true);
-      });
-  }
+      .then(()=>{
 
-  showAddedPopup(){
-    this.hidepopup = false;
-    setTimeout(()=> {
-      this.hidepopup = true
-    }, 2000);
+
+      if(this.stock <= 0){
+        new popupMessage('Please note:', 'This product is out of stock. Delivery may take some time.', 'warning')
+      }
+
+      this.shoppingcartService.addProduct(product);
+    });
   }
 
 }

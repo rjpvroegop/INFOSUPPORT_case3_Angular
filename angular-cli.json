@@ -10,7 +10,7 @@
       "assets": [
         "assets",
         "favicon.ico",
-        "mainindex.js",
+        "index.js",
         ".htaccess"
       ],
       "index": "index.html",

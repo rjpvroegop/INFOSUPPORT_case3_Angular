@@ -17,13 +17,10 @@
         <li><a href="catalog/components">Components</a></li>
         <li><a href="catalog/clothing">Clothing</a></li>
         <li><a href="catalog/accessories">Accessories</a></li>
-        <li><a href="contact">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="!loginService.loggedIn()"><a href="/customer"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
-        <li *ngIf="!loginService.loggedIn()"><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Log in</a></li>
-        <li *ngIf="loginService.loggedIn()"><a href="/customer/{{loginService.customer.id}}"><span class="glyphicon glyphicon-user"></span> {{loginService.customer.firstName}} {{loginService.customer.lastName}}</a></li>
-        <li *ngIf="loginService.loggedIn()"><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        <li><a href="/customer"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
+        <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Log in</a></li>
         <li><a href="shoppingcart"><span class="glyphicon glyphicon-shopping-cart"></span> <small>{{shoppingcartService.getOrder().orderitems.length}}</small></a></li>
       </ul>
     </div>

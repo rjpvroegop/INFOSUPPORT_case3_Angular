@@ -6,11 +6,8 @@ import {Order} from "../models/order";
 })
 export class OrderpricePipe implements PipeTransform {
   transform(values: Order): number {
-    if(values.orderitems) {
-      return Number(values.orderitems.reduce((price, orderitem) => {
-        return price + orderitem.product.price * orderitem.amount;
-      }, 0).toFixed(2));
-    } else
-      return 0
+    return values.orderitems.reduce((price, orderitem) => {
+      return price + orderitem.product.price * orderitem.amount;
+    }, 0);
   }
 }

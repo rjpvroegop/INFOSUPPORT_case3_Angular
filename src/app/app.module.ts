@@ -9,7 +9,6 @@ import {ProductComponent} from "./pages/product/product.component";
 import {CatalogComponent} from "./pages/catalog/catalog.component";
 import {CustomerComponent} from "./pages/customer/customer.component";
 import {HeaderComponent} from "./directives/header/header.component";
-import {FooterComponent} from "./directives/footer/footer.component";
 import {ProductThumbnailComponent} from "./directives/product-thumbnail/product-thumbnail.component";
 import {ProductService} from "./services/product.service";
 import {AccountService} from "./services/account.service";
@@ -21,20 +20,11 @@ import {SearchPipe} from "./pipes/search-pipe";
 import {ShoppingcartComponent} from "./pages/shoppingcart/shoppingcart.component";
 import {ShoppingcartService} from "./services/shoppingcart.service";
 import {OrderpricePipe} from "./pipes/orderprice-pipe";
-import { MyDatePickerModule } from 'mydatepicker';
+import {MyDatePickerModule} from "mydatepicker";
 import {StockService} from "./services/stock.service";
 import {CategoryService} from "./services/category.service";
 import {OrderComponent} from "./pages/order/order.component";
 import {LoginComponent} from "./pages/login/login.component";
-import {ContactComponent} from "./pages/contact/contact.component";
-import {ThanksOrderComponent} from "./pages/thanks-order/thanks-order.component";
-import {LogoutComponent} from "./pages/logout/logout.component";
-import {LoginService} from "./services/login.service";
-import {OrderService} from "./services/order.service";
-import {InvoiceComponent} from "./directives/invoice/invoice.component";
-import {PostOrderComponent} from "./pages/post-order/post-order.component";
-import {TaxPipe} from "./pipes/price-tax-pipe";
-import {AgmCoreModule} from "angular2-google-maps/core";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -42,17 +32,11 @@ const appRoutes: Routes = [
   {path: 'catalog/:category', component: CatalogComponent},
   {path: 'product/:id', component: ProductComponent},
   {path: 'customer', component: CustomerComponent},
-  {path: 'customer/:customerid', component: CustomerComponent},
+  {path: 'customer/:id', component: CustomerComponent},
   {path: 'order/:id', component: OrderComponent},
   {path: 'order', component: OrderComponent},
   {path: 'shoppingcart', component: ShoppingcartComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'contact', component: ContactComponent},
-  {path: 'thanks', component: ThanksOrderComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'logout', component: LogoutComponent},
-  {path: 'login/error', component: LoginComponent},
-  {path: 'postorder/:orderid', component: PostOrderComponent}
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({
@@ -67,15 +51,10 @@ const appRoutes: Routes = [
     CustomerComponent,
     ShoppingcartComponent,
     OrderComponent,
-    LoginComponent,
-    LogoutComponent,
-    PostOrderComponent,
 
     // directives
     HeaderComponent,
-    FooterComponent,
     ProductThumbnailComponent,
-    InvoiceComponent,
 
     // pipes
     SortPipe,
@@ -84,9 +63,6 @@ const appRoutes: Routes = [
     SearchPipe,
     OrderpricePipe,
     LoginComponent,
-    ContactComponent,
-    ThanksOrderComponent,
-    TaxPipe,
 
   ],
   imports: [
@@ -96,9 +72,6 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     MyDatePickerModule,
-    AgmCoreModule.forRoot({
-      apiKey: "AIzaSyCoENbGFFZVGiwoZU0btVyjzgcwjztzoDE"
-    })
   ],
   providers: [
     // services
@@ -108,8 +81,6 @@ const appRoutes: Routes = [
     ShoppingcartService,
     StockService,
     CategoryService,
-    LoginService,
-    OrderService,
   ],
   bootstrap: [AppComponent]
 })

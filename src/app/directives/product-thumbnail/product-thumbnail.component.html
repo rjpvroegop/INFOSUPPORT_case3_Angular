@@ -2,18 +2,10 @@
   <a routerLink="/product/{{product.id}}"><img [src]="product.image" alt="product_image"></a>
   <hr/>
   <p><strong>{{product.name}}</strong></p>
-  <p><strong>$ {{(product.price).toFixed(2)}}</strong></p>
-  <p><small>$ {{(product.price + (product.price | tax)).toFixed(2)}} incl.</small></p>
+  <p><strong>${{product.price}}</strong></p>
   <div class="row">
     <div class="col-md-12">
-      <a class="btn btn-primary addtocart" (click)="addProductToCart(product)">
-        <span class="glyphicon glyphicon-shopping-cart"></span>
-        Add to cart
-
-        <p [ngClass]="{hidden: hidepopup, orange: stock == 0}"
-           class="triangle-border left popup-message"
-           [innerHTML]="stock == 0 ? popupMessageNo : popupMessageOk"></p>
-      </a>
+      <a class="btn btn-primary" (click)="addProductToCart(product)"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
     </div>
   </div>
 </div>

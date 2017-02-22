@@ -6,9 +6,6 @@
     <h3>Product Details</h3>
     <hr/>
     <dl class="row">
-      <dt class="col-sm-4">Productnumber</dt>
-      <dd class="col-sm-8">{{product.bsKey}}</dd>
-
       <dt class="col-sm-4">Name</dt>
       <dd class="col-sm-8">{{product.name}}</dd>
 
@@ -19,21 +16,13 @@
       <dd class="col-sm-8">{{stock}}<span *ngIf="stock == undefined" class="glyphicon glyphicon-repeat rotating"></span></dd>
 
       <dt class="col-sm-4">Price</dt>
-      <dd class="col-sm-8">$ {{product.price}}</dd>
-
-      <dt class="col-sm-4">Tax</dt>
-      <dd class="col-sm-8">$ {{(product.price | tax).toFixed(2)}}</dd>
-
-      <dt class="col-sm-4">Price incl. Tax</dt>
-      <dd class="col-sm-8">$ {{(product.price + (product.price | tax)).toFixed(2)}}</dd>
+      <dd class="col-sm-8">{{product.price}}</dd>
 
       <dt class="col-sm-4">Supplier</dt>
       <dd class="col-sm-8">{{product.supplier ? product.supplier.name : ''}}</dd>
     </dl>
     <hr/>
-    <a class="btn btn-primary addtocart" (click)="addProductToCart(product)">Add To Cart
-      <p [ngClass]="{hidden: hidepopup, orange: stock == 0}"
-         class="triangle-border left popup-message">Added to shoppingcart</p></a>
+    <a class="btn btn-primary" (click)="addProductToCart(product)">Add To Cart</a>
 
   </div>
 </div>

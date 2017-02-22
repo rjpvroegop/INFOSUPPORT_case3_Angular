@@ -39,8 +39,14 @@ export class ProductService {
     })
   }
 
-  extractProducts(res): Product[] {
-    let body: Product[] = res.json();
-    return body;
+  extractProducts(res) {
+    let body = res.json();
+
+    let products = body.map(product => {
+      product = <Product> product;
+      return product;
+    });
+
+    return products;
   }
 }
